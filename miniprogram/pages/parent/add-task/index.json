@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "\u65b0\u5efa\u4efb\u52a1",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/index"
+  }
+}

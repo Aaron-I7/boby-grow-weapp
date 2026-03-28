@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(ls \"e:/project/must/boby-grow-weapp/miniprogram/images/tab-\"* \"e:/project/must/boby-grow-weapp/miniprogram/images/avatar-\"*)"
+    ]
+  }
+}

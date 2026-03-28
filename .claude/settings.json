@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"e:/project/must/boby-grow-weapp/miniprogram/images/tab-\"*)",
+      "Bash(python -c \":*)",
+      "Bash(ls \"e:/project/must/boby-grow-weapp/miniprogram/images/icons/avatar\"*)",
+      "Bash(ls \"e:/project/must/boby-grow-weapp/miniprogram/images/\"*.png)"
+    ],
+    "additionalDirectories": [
+      "e:\\project\\must\\boby-grow-weapp\\miniprogram\\images"
+    ]
+  }
+}

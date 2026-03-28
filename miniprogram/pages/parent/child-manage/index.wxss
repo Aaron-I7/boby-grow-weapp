@@ -1,0 +1,270 @@
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 24rpx 0;
+}
+
+.action-btn {
+  flex: 1 1 calc(50% - 8rpx);
+  min-width: 0;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+  font-size: 24rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn-outline {
+  background: var(--parent-surface);
+  color: var(--parent-primary);
+  border: 2rpx solid var(--parent-primary);
+}
+
+.child-card {
+  margin-bottom: 20rpx;
+}
+
+.child-header {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.child-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  border: 4rpx solid #4fc3f7;
+  box-sizing: border-box;
+}
+
+.child-info {
+  flex: 1;
+}
+
+.child-name {
+  font-size: 34rpx;
+  font-weight: 700;
+  display: block;
+}
+
+.child-level {
+  font-size: 24rpx;
+  color: var(--parent-text-hint);
+}
+
+.child-points {
+  text-align: center;
+}
+
+.child-points .points-num {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--parent-primary);
+  display: block;
+}
+
+.child-points .points-label {
+  font-size: 20rpx;
+  color: var(--parent-text-hint);
+}
+
+.child-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--parent-border);
+}
+
+.verify-code {
+  font-size: 24rpx;
+  color: var(--parent-text-secondary);
+}
+
+.edit-btn-text {
+  font-size: 24rpx;
+  color: var(--parent-primary);
+  font-weight: 700;
+}
+
+.add-hint {
+  text-align: center;
+  padding: 40rpx;
+  color: var(--parent-text-hint);
+  font-size: 28rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 24rpx;
+  margin-top: 20rpx;
+}
+
+.modal-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.edit-modal {
+  width: 100%;
+  max-height: 90vh;
+  background: var(--parent-surface);
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.edit-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--parent-text);
+  margin-bottom: 22rpx;
+}
+
+.form-item {
+  margin-bottom: 20rpx;
+}
+
+.form-item-avatar {
+  margin-bottom: 10rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 24rpx;
+  color: #51616d;
+  margin-bottom: 10rpx;
+}
+
+.form-input {
+  height: 76rpx;
+  border-radius: 14rpx;
+  border: 1rpx solid #dce4ea;
+  background: #fafcfe;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  color: var(--parent-text);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.picker-value {
+  justify-content: space-between;
+}
+
+.picker-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  opacity: 0.55;
+}
+
+.avatar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mode-switch {
+  display: flex;
+  align-items: center;
+  border: 1rpx solid #dce4ea;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+
+.mode-item {
+  padding: 8rpx 18rpx;
+  font-size: 22rpx;
+  color: #687884;
+  background: var(--parent-surface);
+}
+
+.mode-active {
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+}
+
+.avatar-grid {
+  margin-top: 12rpx;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12rpx;
+}
+
+.avatar-cell {
+  width: 100rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2rpx solid transparent;
+  background: #f3f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-selected {
+  border-color: var(--parent-primary);
+}
+
+.avatar-option {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+}
+
+.modal-actions {
+  margin-top: 18rpx;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14rpx;
+}
+
+.btn-cancel,
+.btn-confirm {
+  min-width: 132rpx;
+  height: 68rpx;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cancel {
+  background: var(--parent-surface-muted);
+  color: #5d6d79;
+}
+
+.btn-confirm {
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+}
+
+.is-press {
+  opacity: 0.85;
+  transform: scale(var(--parent-press-scale));
+}

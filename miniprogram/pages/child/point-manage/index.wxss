@@ -1,0 +1,19 @@
+page { background: #FFF8E1; }
+.child-container { padding: 0 32rpx 60rpx; background: #FFF8E1; min-height: 100vh; }
+
+.points-summary { background: #fff; border-radius: 32rpx; padding: 40rpx; display: flex; justify-content: space-between; align-items: center; margin: 24rpx 0; box-shadow: 0 4rpx 16rpx rgba(255,152,0,0.08); }
+.summary-main { display: flex; flex-direction: column; }
+.summary-label { font-size: 24rpx; color: #999; }
+.summary-num { font-size: 56rpx; font-weight: 800; color: #5D4037; }
+.summary-week { background: #E8F5E9; padding: 8rpx 20rpx; border-radius: 20rpx; font-size: 24rpx; color: #2E7D32; font-weight: 600; }
+
+.record-list { margin-top: 24rpx; }
+.record-item { background: #fff; border-radius: 24rpx; padding: 28rpx; margin-bottom: 16rpx; display: flex; justify-content: space-between; align-items: center; }
+.record-left { flex: 1; }
+.record-note { font-size: 30rpx; font-weight: 600; color: #5D4037; display: block; }
+.record-time { font-size: 22rpx; color: #999; margin-top: 4rpx; }
+.record-amount { font-size: 36rpx; font-weight: 800; }
+.record-plus { color: #4CAF50; }
+.record-minus { color: #F44336; }
+
+.load-more { text-align: center; padding: 32rpx; color: #999; font-size: 26rpx; }

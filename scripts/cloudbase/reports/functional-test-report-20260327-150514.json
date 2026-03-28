@@ -1,0 +1,156 @@
+﻿{
+    "failedCases":  0,
+    "details":  [
+                    {
+                        "name":  "L1.action-mapping.37-implemented",
+                        "status":  "passed",
+                        "durationMs":  40,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.login.return-schema",
+                        "status":  "passed",
+                        "durationMs":  2109,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.family.create-or-get.return+persist",
+                        "status":  "passed",
+                        "durationMs":  4065,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.addChild.write+return",
+                        "status":  "passed",
+                        "durationMs":  6085,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.editChild.persist",
+                        "status":  "passed",
+                        "durationMs":  4066,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.profile.update+get.persist",
+                        "status":  "passed",
+                        "durationMs":  4042,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.updateDailyLimit.persist",
+                        "status":  "passed",
+                        "durationMs":  4084,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.coadmin.add+remove.persist",
+                        "status":  "passed",
+                        "durationMs":  10175,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.createRule.write+return",
+                        "status":  "passed",
+                        "durationMs":  6094,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.updateRule.persist",
+                        "status":  "passed",
+                        "durationMs":  4078,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.toggleRule.persist",
+                        "status":  "passed",
+                        "durationMs":  6089,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.getTasks.return+submitTask.persist",
+                        "status":  "passed",
+                        "durationMs":  7303,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.auditTask.persist",
+                        "status":  "passed",
+                        "durationMs":  4111,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.completeTask.persist",
+                        "status":  "passed",
+                        "durationMs":  6108,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.analytics.return-schema",
+                        "status":  "passed",
+                        "durationMs":  6083,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.createReward.write+return",
+                        "status":  "passed",
+                        "durationMs":  6088,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.redeemReward.write+return",
+                        "status":  "passed",
+                        "durationMs":  4071,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.auditRedeem.rejected.persist",
+                        "status":  "passed",
+                        "durationMs":  4064,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.adjustPoints.write+return",
+                        "status":  "passed",
+                        "durationMs":  7109,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.auditRedeem.approved.write-record",
+                        "status":  "passed",
+                        "durationMs":  10151,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.submitWish.write+return",
+                        "status":  "passed",
+                        "durationMs":  4070,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.auditWish.persist",
+                        "status":  "passed",
+                        "durationMs":  4048,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.getWeeklyTrend.return-schema",
+                        "status":  "passed",
+                        "durationMs":  2024,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "mcp.getVerifyCode.return-schema",
+                        "status":  "passed",
+                        "durationMs":  3034,
+                        "error":  ""
+                    }
+                ],
+    "envId":  "cloudbase-1g26i1txc0ae8f4b",
+    "ruleId":  "rule_1774595033727_yhhlpi",
+    "totalCases":  24,
+    "generatedAt":  "2026-03-27T15:05:14",
+    "rewardId":  "reward_1774595073662_3rufxe",
+    "childId":  "child_1774595005234_ijdeag",
+    "passedCases":  24
+}

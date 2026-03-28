@@ -1,0 +1,68 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="hero">
+      <text class="hero-tag">{{labels.heroTag}}</text>
+      <text class="hero-title">{{labels.heroTitle}}</text>
+      <text class="hero-desc">{{labels.heroDesc}}</text>
+    </view>
+
+    <view class="limit-card">
+      <view class="limit-top">
+        <text class="limit-value">{{limit}}</text>
+        <text class="limit-unit">PTS</text>
+      </view>
+      <text class="limit-label">{{labels.currentLimit}}</text>
+
+      <view class="slider-wrap">
+        <view class="slider-track">
+          <view class="slider-fill" style="width: {{sliderPercent}}%;"></view>
+        </view>
+        <slider min="100" max="1000" step="50" value="{{limit}}" bindchange="onSliderChange" activeColor="#0f6f92" backgroundColor="transparent" block-size="20" />
+        <view class="slider-labels">
+          <text>100 pts</text>
+          <text>1000 pts</text>
+        </view>
+      </view>
+
+      <view class="manual-block">
+        <text class="manual-label">{{labels.manual}}</text>
+        <view class="manual-input-wrap">
+          <input class="manual-input" type="number" value="{{limit}}" bindinput="onInput" />
+          <text class="manual-unit">PTS</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="tip-card">
+      <view class="tip-icon-wrap">
+      <image class="tip-icon" src="/images/svg/ui/icon-info.svg" />
+      </view>
+      <view class="tip-content">
+        <text class="tip-title">{{labels.tipTitle}}</text>
+        <text class="tip-text">{{labels.tipText}}</text>
+      </view>
+    </view>
+
+    <view class="stat-grid">
+      <view class="stat-card">
+      <image class="stat-icon" src="/images/svg/ui/icon-chart.svg" />
+        <text class="stat-label">{{labels.statAvg}}</text>
+        <text class="stat-value">{{weekAvg}} pts</text>
+      </view>
+      <view class="stat-card">
+      <image class="stat-icon" src="/images/svg/task/icon-stars.svg" />
+        <text class="stat-label">{{labels.statRange}}</text>
+        <text class="stat-value">400-600</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="save-btn pressable" bindtap="onSave" hover-class="is-press" hover-stay-time="60">
+      <image class="save-icon" src="/images/svg/ui/icon-save.svg" />
+      <text>{{labels.save}}</text>
+    </view>
+  </view>
+</view>

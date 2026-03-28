@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#ffb870",
+              "inverse-primary": "#75d1ff",
+              "on-error": "#ffffff",
+              "tertiary": "#7c5716",
+              "on-surface-variant": "#3e484f",
+              "secondary": "#8b5000",
+              "primary": "#006688",
+              "surface-container-highest": "#e0e3e5",
+              "primary-container": "#4fc3f7",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-container": "#ff9800",
+              "on-primary-fixed": "#001e2b",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "surface-container": "#eceef0",
+              "on-primary-fixed-variant": "#004d67",
+              "tertiary-fixed-dim": "#f0be74",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#653900",
+              "background": "#f8f9fb",
+              "on-primary-container": "#004e69",
+              "error": "#ba1a1a",
+              "inverse-surface": "#2d3133",
+              "primary-fixed-dim": "#75d1ff",
+              "outline": "#6e7980",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#006688",
+              "tertiary-fixed": "#ffddb0",
+              "surface-container-low": "#f2f4f6",
+              "surface": "#f8f9fb",
+              "primary-fixed": "#c2e8ff",
+              "on-background": "#191c1e",
+              "tertiary-container": "#dfaf66",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#281800",
+              "on-surface": "#191c1e",
+              "on-secondary-fixed": "#2c1600",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed": "#ffdcbe",
+              "on-tertiary-fixed-variant": "#614000",
+              "outline-variant": "#bdc8d0",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#634100",
+              "on-secondary-fixed-variant": "#693c00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        .bouncy-card {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bouncy-card:active {
+            transform: scale(0.96) rotate(-1deg);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-slate-50 dark:bg-slate-900 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="text-sky-700 dark:text-sky-400 active:scale-95 duration-200 p-2 hover:bg-slate-200/50 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-on-surface text-xl">孩子档案管理</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img alt="Parent Profile" class="w-full h-full object-cover" data-alt="Modern professional portrait of a smiling parent in soft natural daylight with a clean blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAvMbmTD1ZC7BOWiQHAnVVDj47lA0ExgarlTW1qacmnAu7j8tstAS4xcDbktw6_I9yu0QDA2RsDgu8drNS6nb29q8vK6t5sOdmjHua5DkJCUTwozy46oYcpV-X96duNSNvm-acxNa-D_Ac14UhrY464AmhMh-mvPfeGoNvHyKIXPfj9857itwHkM4K6CSkwBKwKlHYjyDFwtOnCeDhckN_s7GhF7IqBjMDpZzLh26wSAFtfLt_05-SrP7-oXLToN_Ie7Hxg8w2hE2s"/>
+</div>
+</header>
+<main class="flex-1 px-6 py-8 max-w-2xl mx-auto w-full">
+<!-- Dashboard Header / Summary Area -->
+<div class="mb-10 text-center md:text-left">
+<h2 class="font-headline text-on-surface-variant font-bold text-2xl mb-2">成长记录中心</h2>
+<p class="text-on-surface-variant/70 text-sm leading-relaxed">在这里管理孩子们的成长足迹，追踪积分与成就。</p>
+</div>
+<!-- Bento Grid / Card List -->
+<div class="grid gap-6">
+<!-- Child Card: 小明 -->
+<div class="bouncy-card bg-surface-container-lowest p-6 rounded-xl flex items-center gap-5 group relative shadow-[0_4px_20px_-4px_rgba(0,102,136,0.04)]">
+<div class="relative">
+<div class="w-20 h-20 rounded-full border-4 border-primary-container p-1">
+<img alt="Xiao Ming Avatar" class="w-full h-full object-cover rounded-full" data-alt="Candid portrait of a cheerful little boy with messy hair laughing against a soft blue sky background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFjFuSpvJy-x8Ak2_fI2WvypQCMupHLKnBKF6eD5jM9RRhZAdbV2QkvsHZYN6obLhkVVDVNyo9wOSgpxmrlYLlg9Wcd9RwXNea0D028yd-dfNLFVEKlK_Zb8urud4Wq8S-uYUnn_0u2mmjJiNF_aLmE2EC9vml-87OXZXQB9cA0cjFd67aRd565RQ11YIAXixKxMYqScglHzPTNzpbOlt-GJgU6-i8DQzh9gp7vS2pFgV-n8B6nTVJbXPz_pr5pUMXkQhP0tSQzXvs"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        LV.12
+                    </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline font-bold text-xl text-on-surface">小明</span>
+<div class="bg-tertiary-container/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-[11px] font-bold text-on-tertiary-container uppercase tracking-tight">探索者</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">当前积分</span>
+<span class="text-primary font-bold text-lg">1,250</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">今日获得</span>
+<span class="text-secondary font-bold text-lg">+45</span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Child Card: 小红 -->
+<div class="bouncy-card bg-surface-container-lowest p-6 rounded-xl flex items-center gap-5 group relative shadow-[0_4px_20px_-4px_rgba(0,102,136,0.04)]">
+<div class="relative">
+<div class="w-20 h-20 rounded-full border-4 border-secondary-container p-1">
+<img alt="Xiao Hong Avatar" class="w-full h-full object-cover rounded-full" data-alt="Charming close-up of a young girl with pigtails smiling softly in a garden with warm sunlight filtering through leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCevxQGlT6aSj3ePZMmwhTjppMzCRIHkOFMMkIa5_Tgh17qXfUwHaLXxh3oTm9S35kFvSja4gKuw_548iJVAZR_2qbIforkVW2XDecW08OSjszTZPhc_hAeo-kI0mXHLHZ8VgLSw299LOamca0DrqGOkV2rRqrKc4OzPPB_NEI1toG8mfsb2MWetNKdUUalWJQcZdu2qz_vjkoo105jIKnLb1oNYLH2iNrIiTbxyQ_9L_XtnkIAG3E67QZB09nibh_kadq8IeJXKVwe"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary text-on-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                        LV.08
+                    </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline font-bold text-xl text-on-surface">小红</span>
+<div class="bg-secondary-container/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[11px] font-bold text-on-secondary-container uppercase tracking-tight">小能手</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">当前积分</span>
+<span class="text-primary font-bold text-lg">890</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">今日获得</span>
+<span class="text-secondary font-bold text-lg">+12</span>
+</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Empty State / Add Suggestion Card -->
+<div class="border-2 border-dashed border-outline-variant/40 p-8 rounded-xl flex flex-col items-center justify-center text-center bg-surface-container-low/50">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-outline" data-icon="child_care">child_care</span>
+</div>
+<h3 class="font-bold text-on-surface-variant/80">还可以添加多名成员</h3>
+<p class="text-xs text-on-surface-variant/50 mt-1">每个孩子都有独立的积分体系与成长任务</p>
+</div>
+</div>
+</main>
+<!-- FAB Action Area -->
+<div class="fixed bottom-0 left-0 w-full px-6 pb-10 pointer-events-none">
+<div class="max-w-2xl mx-auto flex justify-center">
+<button class="pointer-events-auto h-14 px-8 bg-primary text-on-primary rounded-full shadow-[0_12px_24px_-4px_rgba(0,102,136,0.2)] flex items-center gap-3 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-bold tracking-tight">新增孩子档案</span>
+</button>
+</div>
+</div>
+</body></html>

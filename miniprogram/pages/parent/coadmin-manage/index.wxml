@@ -1,0 +1,71 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="hero-card">
+      <view class="hero-head">
+      <image class="hero-info-icon" src="/images/svg/ui/icon-info.svg" />
+        <text class="hero-tag">{{labels.heroTag}}</text>
+      </view>
+      <text class="hero-title">{{labels.heroTitle}}</text>
+      <text class="hero-desc">{{labels.heroDesc}}</text>
+      <view class="hero-bubble"></view>
+    </view>
+
+    <view class="section-head">
+      <text class="section-title">{{labels.sectionTitle}}</text>
+      <text class="section-count">{{labels.memberCountPrefix}}{{members.length}}{{labels.memberCountSuffix}}</text>
+    </view>
+
+    <view class="member-card" wx:for="{{members}}" wx:key="id">
+      <text class="member-right-note" wx:if="{{item.role === 'admin' && item.roleNote}}">{{item.roleNote}}</text>
+      <view class="member-left">
+        <view class="member-avatar-wrap">
+          <image class="member-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+        </view>
+        <view class="member-info">
+          <text class="member-name">{{item.displayName}}</text>
+          <view class="role-badge {{item.role === 'admin' ? 'role-admin' : 'role-coadmin'}}">{{item.roleText}}</view>
+          <text class="member-note" wx:if="{{item.role !== 'admin' && item.roleNote}}">{{item.roleNote}}</text>
+        </view>
+      </view>
+      <view class="btn-remove pressable" wx:if="{{item.role === 'coadmin'}}" catchtap="onRemove" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">{{labels.remove}}</view>
+    </view>
+
+    <view class="invite-card">
+      <view class="invite-icon-wrap">
+      <image class="invite-icon" src="/images/svg/ui/icon-person-add.svg" />
+      </view>
+      <text class="invite-title">{{labels.inviteTitle}}</text>
+      <text class="invite-desc">{{labels.inviteDesc}}</text>
+      <view class="invite-actions">
+        <view class="invite-btn-primary pressable" bindtap="onInviteScan" hover-class="is-press" hover-stay-time="60">
+        <image class="invite-btn-icon" src="/images/svg/ui/icon-erweima.svg" />
+          <text>{{labels.inviteScan}}</text>
+        </view>
+        <view class="invite-btn-secondary pressable" bindtap="onInviteShare" hover-class="is-press" hover-stay-time="60">
+        <image class="invite-btn-icon" src="/images/svg/ui/icon-share.svg" />
+          <text>{{labels.inviteShare}}</text>
+        </view>
+        <view class="invite-btn-secondary pressable" bindtap="onCopyInviteLink" hover-class="is-press" hover-stay-time="60">
+        <image class="invite-btn-icon" src="/images/svg/ui/icon-list.svg" />
+          <text>{{labels.inviteCopy}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="qr-mask" wx:if="{{inviteQrVisible}}" bindtap="onCloseInviteQr">
+    <view class="qr-dialog" catchtap="noop">
+      <text class="qr-title">{{labels.inviteQrTitle}}</text>
+      <text class="qr-hint">{{labels.inviteQrHint}}</text>
+      <text class="qr-fallback-hint" wx:if="{{!inviteQrFileId}}">{{labels.inviteQrFallbackHint}}</text>
+      <image class="qr-image" wx:if="{{inviteQrFileId}}" src="{{inviteQrFileId}}" mode="aspectFit" />
+      <view class="qr-link" wx:if="{{inviteShareLink || inviteSharePath}}">{{inviteShareLink || inviteSharePath}}</view>
+      <view class="qr-actions">
+        <view class="qr-btn qr-btn-light" bindtap="onCopyQrLink">{{labels.copyLink}}</view>
+        <view class="qr-btn qr-btn-dark" bindtap="onCloseInviteQr">{{labels.close}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>新增孩子 - Parent Executive Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#ffdcbe",
+              "surface-dim": "#d8dadc",
+              "on-tertiary-container": "#634100",
+              "on-primary-fixed": "#001e2b",
+              "on-primary-fixed-variant": "#004d67",
+              "on-background": "#191c1e",
+              "on-surface": "#191c1e",
+              "on-surface-variant": "#3e484f",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#75d1ff",
+              "outline-variant": "#bdc8d0",
+              "on-error-container": "#93000a",
+              "surface": "#f8f9fb",
+              "on-primary-container": "#004e69",
+              "tertiary": "#7c5716",
+              "surface-container": "#eceef0",
+              "surface-container-high": "#e6e8ea",
+              "tertiary-fixed": "#ffddb0",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary-fixed-variant": "#614000",
+              "error": "#ba1a1a",
+              "secondary-container": "#ff9800",
+              "on-secondary-container": "#653900",
+              "surface-tint": "#006688",
+              "on-error": "#ffffff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#8b5000",
+              "outline": "#6e7980",
+              "surface-container-low": "#f2f4f6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "tertiary-fixed-dim": "#f0be74",
+              "background": "#f8f9fb",
+              "surface-variant": "#e0e3e5",
+              "on-secondary-fixed": "#2c1600",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed-dim": "#ffb870",
+              "on-tertiary-fixed": "#281800",
+              "primary-container": "#4fc3f7",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#dfaf66",
+              "primary-fixed": "#c2e8ff",
+              "primary": "#006688",
+              "on-secondary-fixed-variant": "#693c00",
+              "inverse-primary": "#75d1ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<div class="noise-overlay"></div>
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-slate-50 dark:bg-slate-900 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full" style="">
+<span class="material-symbols-outlined text-sky-700 dark:text-sky-400" data-icon="arrow_back" style="">arrow_back</span>
+</button>
+<h1 class="font-headline text-lg font-bold tracking-tight text-on-surface" style="">新增孩子</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<img alt="Parent Profile" class="w-full h-full object-cover" data-alt="Professional portrait of a middle-aged parent with a friendly expression and soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEAauEL--NMaUsq0VxI6fwtzclvM6kmrcRmvJwo3cHvv0Xt0v6gTLH-3oCWADMZDmNYefAMvvhOF3AW8xl6-nEzfUHAbZRfLy38vRkPBT6Q10nWIirkJYVZzCh8zDpAUziI8wFZM6lUN9C8O8U3gSde2P8HZWfnn3LAhQxhGRp9p19BBKV5rq4JS-F2sL0Z_gNivcPr7I95hwt0KKHrF9iknkblbwDVqJXCcmXkPu2l638YMfhDYQjpxpVoKGmMDXCRSDbfJASfKcH" style=""/>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-px w-full opacity-15"></div>
+</header>
+<main class="max-w-xl mx-auto px-6 py-8 pb-32">
+<!-- Profile Section -->
+<section class="mb-10 text-center">
+<div class="relative inline-block group">
+<div class="w-32 h-32 rounded-full bg-surface-container-low flex items-center justify-center overflow-hidden mb-6 p-1 border-4 border-white shadow-sm ring-1 ring-outline-variant/15">
+<div class="w-full h-full rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="child_care" style="">child_care</span>
+</div>
+</div>
+<button class="absolute bottom-6 right-0 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform" style="">
+<span class="material-symbols-outlined text-lg" data-icon="edit" style="">edit</span>
+</button>
+</div>
+<div class="space-y-4">
+<p class="font-label text-xs uppercase tracking-wider font-medium text-on-surface-variant" style="">选择预设头像</p>
+<div class="flex justify-center gap-4 overflow-x-auto py-2 no-scrollbar">
+<button class="w-16 h-16 rounded-full bg-surface-container-lowest p-1 shadow-sm hover:ring-2 ring-primary transition-all active:scale-95 flex-shrink-0" style="">
+<img class="w-full h-full rounded-full object-cover" data-alt="cute playful 3d style cartoon character head of a boy with brown hair and smiling face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC7rdvO9nt3WWv5UKunVPmRQk_rczDbdNR7Obqo1j920a5u7y4fPOF9JciOQf0ARjcF09lTd012-EmXoOzjQoc3C_ilqQt73M0S-aAC974rDQwcVMlPGQUB0FiR6ozDTkgB6YqD3tAmw4IoFkeGvPAvkKZojD7G12KNuGpc0rK7JrqXPxj73TJi7qiq4P8AppUdV3odQmyFXLxlwr6uiIPJYc1IsE4HzPLa2S1P_qN9dVzq_djAOB68rNZqQvGhBjqRu8KCPymZPM1" style=""/>
+</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-lowest p-1 shadow-sm hover:ring-2 ring-primary transition-all active:scale-95 flex-shrink-0 ring-2" style="">
+<img class="w-full h-full rounded-full object-cover" data-alt="cute playful 3d style cartoon character head of a girl with pigtails and a happy expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVo622zRiohwtQfRCnhvYEL_K1b9J5aQeaojMV-XGuBxxyiBr311XymGf1d6CVcYSx-mgeCrW69-AAKjXSVnG4Vx3jaSDnEjsuVWV5p6m_hECCZg91MFspX34jOkVIKT4yCXnJ07kxMhEcfBgT3t68RwNMyUDvH5ekCt8NsEtdOtq43WJzXfBPjU5eN1Ga8MNDEWDUGlkZaShgCxH4UtGRQ8NGV_fgBPcllZM9eVDRhUfdhstLWmlJUghXN5vlKZHCT_-MT0CEbeGV" style=""/>
+</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-lowest p-1 shadow-sm hover:ring-2 ring-primary transition-all active:scale-95 flex-shrink-0" style="">
+<img class="w-full h-full rounded-full object-cover" data-alt="cute stylized illustration of a smiling young boy with a cap and vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvQS80BEMWkcl2Wwk3H1kxZ5mcR29rGMdmfEccRZuFEEIRNjttvH-MVfl00KKKUqqP-qUBTBRPGL6MbC4xZDkE-aDTnr-yIui-5kPING1Ler2dWmVYIfnYxW68o0E51u9CBrOz2LZ6292J3mJH93Qb1SI4WzTAJpNjxkVq2r9j26evdyoQmwxMpKW-89mFxiFczAz_pE8pB37Sjy26BmQyc0q0ZDrDWi4uZMkKNywQlDrZvjz8WdBKKorKlTH9tU2ZX6byppyImyue" style=""/>
+</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-lowest p-1 shadow-sm hover:ring-2 ring-primary transition-all active:scale-95 flex-shrink-0" style="">
+<img class="w-full h-full rounded-full object-cover" data-alt="vibrant cute 3d avatar of a little girl with glasses and cheerful mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN6pgAIo23N-9pkBEWF1ZeT80uQpmVFFe9LR2Ac0uJ6-J7HpvEeoNcP7uFXa46JiJsm_fdH_viQ5XUUbm2O5rusf-TyCuYYwZFJI66dNt1AOtyijdRJieVnDo1zSB5PIDOnDGtcaPaX77JOD8yR6TbbTIxdFv5kvb7pfj6XIwgLc3RO5taT-K2L61sT5woQkv4dG6V6Cbp97miA2B1VahvphUQcfQe5pQJo8mjuHKm_q24Ntd_q9nSnM4wJ93kzf6kV5U0jIz5iqqd" style=""/>
+</button>
+</div>
+</div>
+</section>
+<!-- Form Fields -->
+<form class="space-y-8">
+<div class="flex items-center gap-2 px-1 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="text-xs text-on-surface-variant font-medium">我们不收集孩子的真实姓名，仅用于家庭内部分辨。</p>
+</div><div class="grid grid-cols-1 gap-6">
+<!-- Name -->
+<!-- Nickname -->
+<div class="space-y-2">
+<label class="font-label text-xs uppercase tracking-wider font-medium text-on-surface-variant ml-1" style="">宝贝称呼</label>
+<div class="relative">
+<input class="w-full h-12 bg-surface-container-highest rounded-lg border-none focus:ring-0 focus:border-primary border-b-2 border-transparent focus:border-b-2 transition-all px-4 placeholder:text-on-surface-variant/40" placeholder="给宝贝起个好听的称呼" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Age -->
+<div class="space-y-2">
+<label class="font-label text-xs uppercase tracking-wider font-medium text-on-surface-variant ml-1" style="">年龄</label>
+<div class="relative">
+<input class="w-full h-12 bg-surface-container-highest rounded-lg border-none focus:ring-0 focus:border-primary border-b-2 border-transparent focus:border-b-2 transition-all px-4 placeholder:text-on-surface-variant/40" placeholder="岁" type="number"/>
+</div>
+</div>
+<!-- Initial Points -->
+<div class="space-y-2">
+<label class="font-label text-xs uppercase tracking-wider font-medium text-on-surface-variant ml-1" style="">初始积分 (可选)</label>
+<div class="relative">
+<input class="w-full h-12 bg-surface-container-highest rounded-lg border-none focus:ring-0 focus:border-primary border-b-2 border-transparent focus:border-b-2 transition-all px-4 placeholder:text-on-surface-variant/40" placeholder="0" type="number"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Hint/Info Card -->
+<div class="bg-primary-fixed/30 p-6 rounded-2xl flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="lightbulb" style='font-variation-settings: "FILL" 1;'>lightbulb</span>
+<div>
+<h4 class="font-headline font-semibold text-on-primary-fixed-variant text-sm mb-1" style="">设置初始积分</h4>
+<p class="text-sm text-on-primary-fixed-variant/80 leading-relaxed" style="">为您的孩子设置第一笔“成长基金”，鼓励他们开始探索点数奖励的世界。</p>
+</div>
+</div>
+</form>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 w-full z-50 rounded-t-2xl border-t border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_20px_0_rgba(0,102,136,0.06)] px-6 pb-8 pt-4">
+<div class="max-w-xl mx-auto">
+<button class="w-full h-[56px] bg-primary text-on-primary font-headline font-bold rounded-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20" style="">
+<span class="material-symbols-outlined" data-icon="person_add" style="">person_add</span>
+                保存并创建
+            </button>
+</div>
+</div>
+<!-- Hidden BottomNavBar Shell (Suppressed due to transactional nature of Add Child screen) -->
+</body></html>

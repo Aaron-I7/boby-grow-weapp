@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="card">
+    <text class="title">{{labels.title}}</text>
+    <text class="desc">{{labels.desc}}</text>
+    <view class="btn" bindtap="onEnter">{{labels.enter}}</view>
+  </view>
+</view>

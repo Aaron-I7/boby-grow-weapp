@@ -1,0 +1,108 @@
+<view class="child-container">
+  <view class="child-header">
+    <view class="child-header-left">
+      <image class="child-avatar" src="{{child.avatarUrl}}" mode="aspectFill" />
+      <view class="child-greeting">
+        <text class="child-name">你好，{{child.nickname}}</text>
+        <text class="child-sub">今天也在稳稳成长</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="points-hero">
+    <image class="star-deco" style="top:20rpx;left:40rpx;width:48rpx;height:48rpx;opacity:0.4;" src="/images/svg/task/icon-star.svg" />
+    <image class="star-deco" style="bottom:40rpx;right:60rpx;width:64rpx;height:64rpx;opacity:0.5;" src="/images/svg/task/icon-star.svg" />
+    <image class="star-deco" style="top:60rpx;right:80rpx;width:32rpx;height:32rpx;opacity:0.3;" src="/images/svg/task/icon-star.svg" />
+    <text class="points-hero-label">我的成长能量</text>
+    <view class="points-hero-row">
+      <text class="points-hero-num">{{child.currentPoints || 0}}</text>
+      <image class="points-hero-star-img" src="/images/svg/task/icon-stars.svg" />
+    </view>
+  </view>
+
+  <view class="flex-between mb-md">
+    <text class="task-section-title">今日小任务</text>
+    <text class="task-remain">剩余 {{pendingCount}} 项</text>
+  </view>
+
+  <view class="child-task-card {{item.status === 'completed' ? 'completed' : ''}}" wx:for="{{tasks}}" wx:key="_id" bindtap="onTapTask" data-id="{{item._id}}">
+    <view class="task-icon-wrap {{item.category === 'habit' ? 'task-icon-green' : item.category === 'study' ? 'task-icon-blue' : item.category === 'chore' ? 'task-icon-orange' : 'task-icon-purple'}}">
+      <image class="icon-lg" src="/images/svg/task/icon-{{item.category}}.svg" />
+    </view>
+    <view class="child-task-info">
+      <text class="child-task-name">{{item.ruleName}}</text>
+      <text class="child-task-status {{item.status === 'completed' ? 'done' : 'pending'}}">
+        {{item.status === 'completed' ? '完成啦，继续保持' : (item.auditStatus === 'pending' ? '已提交，等待家长反馈' : (item.reflectionRequired ? '点我提交今日反思' : '点我一键提交'))}}
+      </text>
+    </view>
+    <view class="task-check {{item.status === 'completed' ? 'task-check-done' : 'task-check-pending'}}">
+      <image class="icon-sm" src="/images/svg/ui/icon-check.svg" wx:if="{{item.status === 'completed'}}" />
+      <image class="icon-sm" src="/images/svg/ui/icon-chevron-right.svg" wx:else />
+    </view>
+  </view>
+
+  <view class="shortcut-grid">
+    <view class="shortcut-card shortcut-orange" bindtap="onRewards">
+      <view class="shortcut-icon">
+        <image class="icon-lg" src="/images/svg/ui/icon-redeem.svg" />
+      </view>
+      <text class="shortcut-text">我的奖励</text>
+    </view>
+    <view class="shortcut-card shortcut-blue" bindtap="onPointManage">
+      <view class="shortcut-icon">
+        <image class="icon-lg" src="/images/svg/ui/icon-list.svg" />
+      </view>
+      <text class="shortcut-text">积分明细</text>
+    </view>
+    <view class="shortcut-card shortcut-purple" bindtap="onSubmitManage">
+      <view class="shortcut-icon">
+        <image class="icon-lg" src="/images/svg/ui/icon-fact-check.svg" />
+      </view>
+      <text class="shortcut-text">我的审核</text>
+    </view>
+  </view>
+
+  <view class="wish-btn" bindtap="onSubmitWish">
+    <image class="icon-md" src="/images/svg/ui/icon-add-circle.svg" style="margin-right:12rpx;" />
+    <text>添加新愿望</text>
+  </view>
+
+  <view wx:if="{{showReflectionModal}}" class="modal-mask" catchtouchmove="true">
+    <view class="modal-card">
+      <text class="modal-title">今日反思</text>
+      <text class="modal-desc">写一句你今天是怎么做到的，家长会先看你的努力过程。</text>
+
+      <view class="phrase-row">
+        <view class="phrase-chip" wx:for="{{reflectionQuickPhrases}}" wx:key="*this" data-phrase="{{item}}" bindtap="onSelectReflectionPhrase">{{item}}</view>
+      </view>
+
+      <textarea class="modal-input" maxlength="120" value="{{reflectionText}}" bindinput="onReflectionInput" placeholder="例如：我先把书包整理好，再开始阅读。" />
+      <view class="modal-actions">
+        <view class="modal-btn cancel" bindtap="onCancelReflection">取消</view>
+        <view class="modal-btn confirm" bindtap="onSubmitReflection">提交</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showWishDrawer}}" class="modal-mask" bindtap="onCloseWishDrawer" catchtouchmove="true">
+    <view class="wish-drawer" catchtap="onKeepDrawer">
+      <view class="wish-drawer-head">
+        <text class="wish-drawer-title">提交新愿望</text>
+        <text class="wish-drawer-desc">写下你想实现的小目标，家长会尽快查看。</text>
+      </view>
+
+      <input class="wish-input" placeholder="例如：周末一起去公园" value="{{wishName}}" bindinput="onWishInput" />
+
+      <view class="wish-icon-grid">
+        <view class="wish-icon-item {{wishIconIndex === index ? 'wish-icon-item-active' : ''}}" wx:for="{{wishIcons}}" wx:key="index" data-idx="{{index}}" bindtap="onSelectWishIcon">
+          <image class="wish-icon-img" src="{{item}}" />
+        </view>
+      </view>
+
+      <view class="wish-actions">
+        <view class="wish-btn-cancel" bindtap="onCloseWishDrawer">取消</view>
+        <view class="wish-btn-confirm" bindtap="onConfirmWish">{{wishSubmitting ? '提交中...' : '提交愿望'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

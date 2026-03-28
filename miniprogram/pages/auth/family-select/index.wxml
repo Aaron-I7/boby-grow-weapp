@@ -1,0 +1,26 @@
+<view class="container px-page">
+  <view class="hero card">
+    <text class="hero-title">{{labels.title}}</text>
+    <text class="hero-subtitle">{{labels.subtitle}}</text>
+  </view>
+
+  <view class="section card">
+    <text class="section-title">{{labels.createTitle}}</text>
+    <text class="section-desc">{{labels.createDesc}}</text>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.familyInput}}</text>
+      <input class="form-input" value="{{familyName}}" placeholder="{{labels.familyInputPlaceholder}}" bindinput="onFamilyNameInput" />
+    </view>
+
+    <view class="btn-primary" bindtap="onCreateFamily">
+      {{loading ? labels.loading : labels.createBtn}}
+    </view>
+  </view>
+
+  <view class="section card">
+    <text class="section-title">{{labels.joinTitle}}</text>
+    <text class="section-desc">{{labels.joinDesc}}</text>
+    <view class="btn-secondary" bindtap="onJoinFamily">{{labels.joinBtn}}</view>
+  </view>
+</view>

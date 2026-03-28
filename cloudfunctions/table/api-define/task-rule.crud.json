@@ -1,0 +1,195 @@
+{
+  "module": "task-rule",
+  "description": "CRUD API definition for add-task page",
+  "table": {
+    "main": "task_rule",
+    "children": [
+      "task_rule_weekday"
+    ]
+  },
+  "actions": [
+    {
+      "name": "createRule",
+      "method": "POST",
+      "path": "/task/rules",
+      "cloudFunction": "task",
+      "request": {
+        "required": [
+          "familyId",
+          "assigneeUserId",
+          "name",
+          "categoryType",
+          "categoryName",
+          "points",
+          "dailyLimit",
+          "frequencyType",
+          "createdBy"
+        ],
+        "properties": {
+          "familyId": "string",
+          "assigneeUserId": "string",
+          "name": "string(1-80)",
+          "categoryType": "enum(habit|study|chore|custom)",
+          "categoryName": "string(1-40)",
+          "categoryIcon": "string(1-32), default=edit",
+          "points": "int > 0",
+          "dailyLimit": "int 1-99",
+          "frequencyType": "enum(loop|once)",
+          "loopMode": "enum(daily|custom), required if frequencyType=loop",
+          "weekdays": "int[] in [1..7], required if loopMode=custom",
+          "enabled": "boolean, default=true",
+          "createdBy": "string"
+        }
+      },
+      "response": {
+        "ruleId": "string",
+        "createdAt": "datetime"
+      },
+      "dbFlow": [
+        "insert task_rule",
+        "if loopMode=custom then batch insert task_rule_weekday"
+      ]
+    },
+    {
+      "name": "getRule",
+      "method": "GET",
+      "path": "/task/rules/{ruleId}",
+      "cloudFunction": "task",
+      "request": {
+        "required": [
+          "ruleId"
+        ],
+        "properties": {
+          "ruleId": "string"
+        }
+      },
+      "response": {
+        "ruleId": "string",
+        "familyId": "string",
+        "assigneeUserId": "string",
+        "name": "string",
+        "categoryType": "string",
+        "categoryName": "string",
+        "categoryIcon": "string",
+        "points": "int",
+        "dailyLimit": "int",
+        "frequencyType": "string",
+        "loopMode": "string|null",
+        "weekdays": "int[]",
+        "enabled": "boolean",
+        "confirmedByChild": "boolean",
+        "createdBy": "string",
+        "updatedBy": "string|null",
+        "createdAt": "datetime",
+        "updatedAt": "datetime"
+      },
+      "dbFlow": [
+        "select one from task_rule where rule_id=? and deleted_at is null",
+        "select weekdays from task_rule_weekday where rule_id=? order by weekday asc"
+      ]
+    },
+    {
+      "name": "getRules",
+      "method": "GET",
+      "path": "/task/rules",
+      "cloudFunction": "task",
+      "request": {
+        "required": [
+          "familyId"
+        ],
+        "properties": {
+          "familyId": "string",
+          "assigneeUserId": "string, optional",
+          "categoryType": "enum(habit|study|chore|custom), optional",
+          "enabled": "boolean, optional",
+          "pageNo": "int >=1, optional",
+          "pageSize": "int 1-100, optional"
+        }
+      },
+      "response": {
+        "list": "TaskRule[]",
+        "total": "int",
+        "pageNo": "int",
+        "pageSize": "int"
+      },
+      "dbFlow": [
+        "query task_rule by family_id + filters + deleted_at is null",
+        "batch query task_rule_weekday and merge into weekdays"
+      ]
+    },
+    {
+      "name": "updateRule",
+      "method": "PUT",
+      "path": "/task/rules/{ruleId}",
+      "cloudFunction": "task",
+      "request": {
+        "required": [
+          "ruleId",
+          "updatedBy"
+        ],
+        "properties": {
+          "ruleId": "string",
+          "assigneeUserId": "string, optional",
+          "name": "string(1-80), optional",
+          "categoryType": "enum(habit|study|chore|custom), optional",
+          "categoryName": "string(1-40), optional",
+          "categoryIcon": "string(1-32), optional",
+          "points": "int > 0, optional",
+          "dailyLimit": "int 1-99, optional",
+          "frequencyType": "enum(loop|once), optional",
+          "loopMode": "enum(daily|custom), optional",
+          "weekdays": "int[] in [1..7], required if loopMode=custom",
+          "enabled": "boolean, optional",
+          "confirmedByChild": "boolean, optional",
+          "updatedBy": "string"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "update task_rule set changed fields, updated_by, updated_at",
+        "if weekdays payload provided: delete old task_rule_weekday then insert new"
+      ]
+    },
+    {
+      "name": "deleteRule",
+      "method": "DELETE",
+      "path": "/task/rules/{ruleId}",
+      "cloudFunction": "task",
+      "request": {
+        "required": [
+          "ruleId",
+          "updatedBy"
+        ],
+        "properties": {
+          "ruleId": "string",
+          "updatedBy": "string"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "soft delete task_rule: set deleted_at=now(), updated_by=?",
+        "hard delete task_rule_weekday rows by rule_id (optional)"
+      ]
+    }
+  ],
+  "compatibilityWithCurrentMiniProgram": {
+    "createRulePayloadMapping": {
+      "assigneeUserId": "assigneeUserId",
+      "name": "name",
+      "category": "categoryType/categoryName",
+      "points": "points",
+      "dailyLimit": "dailyLimit",
+      "frequency": "frequencyType+loopMode",
+      "weekdays": "weekdays"
+    },
+    "notes": [
+      "Current frontend already sends weekdays when custom loop mode is selected.",
+      "For non-custom category, categoryName can be derived from categoryType.",
+      "assigneeUserId is mandatory for create. If task is assigned to child, pass childId in this field."
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="hero card">
+      <text class="hero-title">{{inviteTitle}}</text>
+      <text class="hero-subtitle">{{labels.subtitle}}</text>
+    </view>
+
+    <view class="loading" wx:if="{{loading}}">加载中...</view>
+
+    <block wx:if="{{!loading && preview}}">
+      <view class="info card">
+        <view class="info-row">
+          <text class="label">{{labels.family}}</text>
+          <text class="value">{{preview.familyName || '--'}}</text>
+        </view>
+        <view class="info-row" wx:if="{{preview.type === 'child_bind'}}">
+          <text class="label">{{labels.child}}</text>
+          <text class="value">{{preview.childNickname || '--'}}</text>
+        </view>
+        <view class="info-row">
+          <text class="label">{{labels.expiresAt}}</text>
+          <text class="value">{{preview.expiresAt || '--'}}</text>
+        </view>
+        <view class="info-row">
+          <text class="label">{{labels.status}}</text>
+          <text class="value">{{preview.status || '--'}}</text>
+        </view>
+      </view>
+    </block>
+
+    <view class="status-error" wx:if="{{statusText}}">{{statusText}}</view>
+
+    <view class="actions">
+      <view class="btn-outline" bindtap="onRetry">{{labels.actionRetry}}</view>
+      <view class="btn-outline" bindtap="onLogin">{{labels.actionLogin}}</view>
+      <view class="btn-primary" bindtap="onConfirm">{{confirming ? '处理中...' : labels.actionConfirm}}</view>
+    </view>
+  </view>
+</view>

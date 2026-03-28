@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#75d1ff",
+              "tertiary-fixed-dim": "#f0be74",
+              "inverse-on-surface": "#eff1f3",
+              "surface-container": "#eceef0",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f2f4f6",
+              "primary": "#006688",
+              "outline": "#6e7980",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "inverse-primary": "#75d1ff",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary-fixed-variant": "#614000",
+              "background": "#f8f9fb",
+              "tertiary": "#7c5716",
+              "primary-fixed": "#c2e8ff",
+              "secondary": "#8b5000",
+              "on-secondary-container": "#653900",
+              "primary-container": "#4fc3f7",
+              "on-secondary-fixed": "#2c1600",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed": "#001e2b",
+              "on-surface-variant": "#3e484f",
+              "surface-dim": "#d8dadc",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#006688",
+              "secondary-container": "#ff9800",
+              "secondary-fixed": "#ffdcbe",
+              "on-tertiary-fixed": "#281800",
+              "error": "#ba1a1a",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-fixed-variant": "#693c00",
+              "on-primary-container": "#004e69",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffddb0",
+              "outline-variant": "#bdc8d0",
+              "surface-container-highest": "#e0e3e5",
+              "on-background": "#191c1e",
+              "tertiary-container": "#dfaf66",
+              "on-tertiary-container": "#634100",
+              "on-surface": "#191c1e",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#ffb870",
+              "surface": "#f8f9fb",
+              "on-primary-fixed-variant": "#004d67"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fb;
+            color: #191c1e;
+        }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-slate-50 dark:bg-slate-900 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-200 transition-colors active:scale-95" style="">
+<span class="material-symbols-outlined text-sky-700" style="">arrow_back</span>
+</button>
+<h1 class="font-plus-jakarta text-lg font-bold tracking-tight text-sky-700" style="">基本信息</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs overflow-hidden">
+<img alt="Parent Profile" class="" data-alt="Close up portrait of a professional father smiling in soft natural light, warm and friendly atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlP9rdtZhai8VijgS3Xm6QCSIo5lxM0bJ3BF7suRTcucd6HTbTyGLzLQEahCh1sNsCbGeASfhNHdYB1PVRHGxnleR66dSebMAziaDRxTm2NhCLcNBX1J7_AqbXWgPWANxr4qZw9wvZ26cpRd0MEsC0ySObtLHVk8vcZfX1kT1296ljmTThwOJDi1K1pAV5yE9l4sXaKpKTU90q3s7S1Ztf690xOEEhTtEBPpG17F2YqIntQqZH3JwJpP5XUkR0xlqncGZSvUaU5u9Q" style=""/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-6 max-w-2xl mx-auto space-y-8 pb-12">
+<!-- Profile Overview Card (Editorial Style) -->
+<section class="relative overflow-hidden rounded-3xl p-6 bg-gradient-to-br from-primary to-primary-container text-white shadow-xl">
+<div class="relative z-10 flex items-center justify-between">
+<div>
+<p class="text-[10px] font-label uppercase tracking-[0.15em] opacity-80 mb-1" style="">当前管理家庭</p>
+<h2 class="text-2xl font-plus-jakarta font-extrabold" style="">王小明的快乐成长营</h2>
+</div>
+<div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>family_history</span>
+</div>
+</div>
+<!-- Fine Noise Overlay Simulation -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]"></div>
+</section>
+<!-- Section 1: 家庭管理 -->
+<section class="space-y-4">
+<h3 class="font-plus-jakarta text-sm font-bold tracking-widest text-on-surface-variant uppercase ml-2" style="">家庭管理</h3>
+<div class="bg-surface-container-lowest rounded-[2rem] p-2 space-y-1">
+<a class="flex items-center justify-between p-4 rounded-2xl hover:bg-surface-container-low transition-all active:scale-[0.98]" href="#" style="">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="">supervisor_account</span>
+</div>
+<span class="font-medium text-on-surface" style="">管理协管家长</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" style="">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 rounded-2xl hover:bg-surface-container-low transition-all active:scale-[0.98]" href="#" style="">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="">child_care</span>
+</div>
+<span class="font-medium text-on-surface" style="">孩子档案管理</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" style="">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Section 2: 规则与积分设置 -->
+<section class="space-y-4">
+<h3 class="font-plus-jakarta text-sm font-bold tracking-widest text-on-surface-variant uppercase ml-2" style="">规则与积分设置</h3>
+<div class="bg-surface-container-lowest rounded-[2rem] p-2 space-y-1">
+<a class="flex items-center justify-between p-4 rounded-2xl hover:bg-surface-container-low transition-all active:scale-[0.98]" href="#" style="">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="">speed</span>
+</div>
+<span class="font-medium text-on-surface" style="">每日积分上限</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-outline font-medium" style="">500 pts</span>
+<span class="material-symbols-outlined text-outline-variant" style="">chevron_right</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Section 3: 账号与安全 -->
+<section class="space-y-4">
+<h3 class="font-plus-jakarta text-sm font-bold tracking-widest text-on-surface-variant uppercase ml-2" style="">账号与安全</h3>
+<div class="bg-surface-container-lowest rounded-[2rem] p-2 space-y-1">
+<a class="flex items-center justify-between p-4 rounded-2xl hover:bg-surface-container-low transition-all active:scale-[0.98]" href="#" style="">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" style="">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface" style="">MCP 查询核验码</span>
+<span class="text-[10px] text-outline uppercase tracking-wider" style="">Security Code</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" style="">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 rounded-2xl hover:bg-surface-container-low transition-all active:scale-[0.98]" href="#" style="">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" style="">badge</span>
+</div>
+<span class="font-medium text-on-surface" style="">个人信息修改</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" style="">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Logout Button -->
+<button class="w-full h-14 bg-error-container text-on-error-container font-bold rounded-2xl flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.97] mt-8 mb-12" style="">
+<span class="material-symbols-outlined" style="">logout</span>
+            退出登录
+        </button>
+</main>
+</body></html>

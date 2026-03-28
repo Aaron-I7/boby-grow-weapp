@@ -1,0 +1,36 @@
+<view class="nav-root">
+  <view class="safe-top" style="height: {{safeTop}}px;"></view>
+  <view class="nav-shell" style="height: {{navHeight}}px;">
+    <block wx:if="{{mode === 'primary'}}">
+      <view class="primary-inner">
+        <view class="primary-left">
+          <block wx:if="{{!avatarEmpty && avatarUrl}}">
+            <image class="primary-avatar" src="{{avatarUrl}}" mode="aspectFill" />
+          </block>
+          <view class="primary-avatar primary-avatar-empty" wx:else>
+            <image class="primary-avatar-icon" src="/images/svg/ui/icon-child.svg" mode="aspectFill" />
+          </view>
+          <view class="primary-texts">
+            <text class="primary-subtitle">{{title}}</text>
+            <text class="primary-title">{{subtitle}}</text>
+          </view>
+        </view>
+        <view class="primary-switch pressable" wx:if="{{showSwitch}}" bindtap="onSwitchTap" hover-class="is-press" hover-stay-time="60">
+          <image class="primary-switch-icon" src="/images/svg/ui/icon-switch.svg" />
+        </view>
+        <view class="primary-switch ghost" wx:else></view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="sub-inner">
+        <view class="sub-side">
+          <view class="sub-back-btn pressable" wx:if="{{showBack}}" bindtap="onBackTap" hover-class="is-press" hover-stay-time="60">
+            <image class="sub-back-icon" src="/images/png/nav/icon-arrow-back.png" />
+          </view>
+        </view>
+        <text class="sub-title">{{title}}</text>
+        <view class="sub-side"></view>
+      </view>
+    </block>
+  </view>
+</view>

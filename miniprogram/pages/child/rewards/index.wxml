@@ -1,0 +1,37 @@
+﻿<view class="child-container">
+  <view class="points-bar">
+    <image class="icon-sm" src="/images/svg/task/icon-star.svg" />
+    <text class="points-bar-num">{{child.currentPoints || 0}}</text>
+    <text class="points-bar-label">可用成长能量</text>
+  </view>
+
+  <view class="reward-grid">
+    <view class="reward-card" wx:for="{{rewards}}" wx:key="_id">
+      <view class="reward-icon-wrap">
+        <image class="icon-lg" src="/images/svg/ui/icon-redeem.svg" />
+      </view>
+      <text class="reward-name">{{item.name}}</text>
+      <text class="reward-cost">{{item.cost}} 积分</text>
+      <text class="reward-meta" wx:if="{{item.rewardType}}">类型：{{item.rewardType}}</text>
+      <text class="reward-meta" wx:if="{{item.weeklyQuota > 0}}">每周上限：{{item.weeklyQuota}} 次</text>
+      <text class="reward-meta" wx:if="{{item.cooldownDays > 0}}">冷却：{{item.cooldownDays}} 天</text>
+      <view class="reward-btn {{child.currentPoints >= item.cost ? 'reward-btn-active' : 'reward-btn-disabled'}}" bindtap="onRedeem" data-idx="{{index}}">
+        {{child.currentPoints >= item.cost ? '提交兑换申请' : '积分不足'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="history-section">
+    <text class="history-title">兑换记录</text>
+    <view class="history-empty" wx:if="{{!loadingHistory && redeemHistory.length === 0}}">暂无兑换记录</view>
+    <view class="history-list" wx:if="{{redeemHistory.length > 0}}">
+      <view class="history-item" wx:for="{{redeemHistory}}" wx:key="_id">
+        <view class="history-main">
+          <text class="history-name">{{item.rewardName}}</text>
+          <text class="history-meta">{{item.cost}} 积分</text>
+        </view>
+        <text class="history-status history-status-{{item.status}}">{{item.statusText}}</text>
+      </view>
+    </view>
+  </view>
+</view>

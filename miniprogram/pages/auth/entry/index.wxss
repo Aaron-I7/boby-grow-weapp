@@ -1,0 +1,29 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f3f5f8;
+}
+
+.spinner {
+  width: 58rpx;
+  height: 58rpx;
+  border: 5rpx solid #dce6ee;
+  border-top-color: #0f79aa;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  color: #73808d;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

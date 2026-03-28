@@ -1,0 +1,112 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="body">
+    <view class="form-stack">
+      <view class="form-name">
+        <text class="form-label">{{labels.fieldName}}</text>
+        <input class="form-input" placeholder="{{labels.fieldNamePlaceholder}}" value="{{name}}" bindinput="onInput" data-field="name" />
+      </view>
+
+      <view class="mode-switch-row">
+        <view class="mode-switch-item {{quickMode ? 'mode-switch-item-active' : ''}}" data-mode="quick" bindtap="onSwitchMode">{{labels.quickMode}}</view>
+        <view class="mode-switch-item {{!quickMode ? 'mode-switch-item-active' : ''}}" data-mode="advanced" bindtap="onSwitchMode">{{labels.advancedMode}}</view>
+      </view>
+
+      <view class="reward-block">
+        <text class="form-label">{{labels.fieldPoints}}</text>
+        <view class="points-row">
+          <view class="pt-item {{points === item ? 'pt-active' : ''}} pressable" wx:for="{{pointOptions}}" wx:key="*this" bindtap="onSelectPoints" data-val="{{item}}" hover-class="is-press" hover-stay-time="60">+{{item}}</view>
+          <view wx:if="{{!showCustomInput && !customAddedPoint}}" class="pt-item pt-custom-trigger pressable" bindtap="onShowCustomInput" hover-class="is-press" hover-stay-time="60">
+            <image class="pt-edit-icon" src="/images/svg/task/icon-edit.svg" />
+          </view>
+          <input wx:if="{{showCustomInput}}" class="pt-item pt-custom-inline" type="number" focus="{{showCustomInput}}" placeholder="{{labels.customPoints}}" value="{{customPoints}}" bindinput="onCustomPoints" bindblur="onCustomBlur" />
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.fieldFrequency}}</text>
+        <view class="freq-row">
+          <view class="freq-item {{frequencyType === 'loop' ? 'freq-active' : ''}} pressable" bindtap="onSelectFreqType" data-val="loop" hover-class="is-press" hover-stay-time="60">{{labels.freqLoop}}</view>
+          <view class="freq-item {{frequencyType === 'once' ? 'freq-active' : ''}} pressable" bindtap="onSelectFreqType" data-val="once" hover-class="is-press" hover-stay-time="60">{{labels.freqOnce}}</view>
+        </view>
+
+        <view wx:if="{{frequencyType === 'loop' && !quickMode}}" class="loop-mode-row">
+          <view class="mini-item {{loopMode === 'daily' ? 'mini-active' : ''}} pressable" bindtap="onSelectLoopMode" data-val="daily" hover-class="is-press" hover-stay-time="60">{{labels.loopDaily}}</view>
+          <view class="mini-item {{loopMode === 'custom' ? 'mini-active' : ''}} pressable" bindtap="onSelectLoopMode" data-val="custom" hover-class="is-press" hover-stay-time="60">{{labels.loopCustom}}</view>
+        </view>
+
+        <view wx:if="{{frequencyType === 'loop' && loopMode === 'custom' && !quickMode}}" class="weekday-grid">
+          <view class="weekday-item {{item.active ? 'weekday-active' : ''}} pressable" wx:for="{{weekdayOptions}}" wx:key="key" bindtap="onToggleWeekday" data-day="{{item.value}}" hover-class="is-press" hover-stay-time="60">{{item.label}}</view>
+        </view>
+      </view>
+
+      <view class="advanced-toggle pressable" wx:if="{{quickMode}}" bindtap="onToggleAdvanced" hover-class="is-press" hover-stay-time="60">
+        <text>{{advancedExpanded ? labels.collapseAdvanced : labels.expandAdvanced}}</text>
+        <image class="advanced-toggle-icon {{advancedExpanded ? 'advanced-toggle-icon-open' : ''}}" src="/images/svg/ui/icon-chevron-right.svg" />
+      </view>
+
+      <view class="advanced-section" wx:if="{{!quickMode || advancedExpanded}}">
+        <view class="form-item">
+          <text class="form-label">{{labels.fieldCategory}}</text>
+          <view class="category-grid">
+            <view class="cat-item {{category === item.key ? 'cat-active' : ''}} pressable" wx:for="{{categoryOptions}}" wx:key="key" bindtap="onSelectCategory" data-key="{{item.key}}" hover-class="is-press" hover-stay-time="60">
+              <image class="cat-icon" src="/images/svg/task/icon-{{item.icon}}.svg" />
+              <text class="cat-text">{{item.name}}</text>
+            </view>
+          </view>
+
+          <view wx:if="{{showCustomCategoryEditor}}" class="custom-category-editor">
+            <input class="custom-category-input" placeholder="{{labels.customCategoryPlaceholder}}" value="{{customCategoryDraft}}" bindinput="onCustomCategoryInput" bindblur="onCustomCategoryBlur" />
+            <text class="custom-category-tip">{{labels.customCategoryTip}}</text>
+            <view class="custom-icon-row">
+              <view class="custom-icon-item {{customCategoryIcon === item.icon ? 'custom-icon-active' : ''}} pressable" wx:for="{{categoryIconOptions}}" wx:key="icon" bindtap="onSelectCustomIcon" data-icon="{{item.icon}}" hover-class="is-press" hover-stay-time="60">
+                <image class="custom-icon-img" src="/images/svg/task/icon-{{item.icon}}.svg" />
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">{{labels.fieldPurpose}}</text>
+          <textarea class="form-input purpose-input" placeholder="{{labels.fieldPurposePlaceholder}}" value="{{purposeText}}" bindinput="onInput" data-field="purposeText" />
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">{{labels.fieldIntrinsic}}</text>
+          <view class="freq-row">
+            <view class="mini-item {{intrinsicTag === item.key ? 'mini-active' : ''}} pressable" wx:for="{{intrinsicOptions}}" wx:key="key" bindtap="onSelectIntrinsicTag" data-key="{{item.key}}" hover-class="is-press" hover-stay-time="60">{{item.label}}</view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="form-label">{{labels.fieldReflection}}</text>
+          <view class="freq-row">
+            <view class="mini-item {{reflectionRequired ? 'mini-active' : ''}} pressable" bindtap="onToggleReflectionRequired" hover-class="is-press" hover-stay-time="60">{{labels.reflectionOn}}</view>
+            <view class="mini-item {{!reflectionRequired ? 'mini-active' : ''}} pressable" bindtap="onToggleReflectionRequired" hover-class="is-press" hover-stay-time="60">{{labels.reflectionOff}}</view>
+          </view>
+        </view>
+
+        <view class="limit-row">
+          <text class="limit-label">{{labels.fieldLimit}}</text>
+          <input class="form-input limit-input" type="number" placeholder="{{labels.fieldLimitPlaceholder}}" value="{{dailyLimit}}" bindinput="onInput" data-field="dailyLimit" />
+        </view>
+      </view>
+    </view>
+
+    <view class="tip-card">
+      <view class="tip-icon-wrap">
+        <image class="tip-icon" src="/images/svg/ui/icon-tip.svg" />
+      </view>
+      <view class="tip-content">
+        <text class="tip-title">{{labels.tipTitle}}</text>
+        <text class="tip-text">{{labels.tipText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="btn-cancel pressable" bindtap="onCancel" hover-class="is-press" hover-stay-time="60">{{labels.cancel}}</view>
+    <view class="btn-save pressable" bindtap="onSave" hover-class="is-press" hover-stay-time="60">{{labels.save}}</view>
+  </view>
+</view>

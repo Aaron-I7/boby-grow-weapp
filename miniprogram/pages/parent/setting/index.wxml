@@ -1,0 +1,106 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" showBack="{{false}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="family-card">
+      <view class="family-main">
+        <text class="family-name">{{familyName}}</text>
+      </view>
+      <view class="family-icon-wrap">
+      <image class="family-icon" src="/images/svg/ui/icon-home.svg" />
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">{{labels.familySection}}</text>
+      <view class="menu-card">
+        <view class="menu-item pressable" bindtap="onCoadmin" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-primary-bg">
+          <image class="menu-icon" src="/images/svg/ui/icon-group.svg" />
+            </view>
+            <text class="menu-title">{{labels.coadminTitle}}</text>
+          </view>
+          <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+        <view class="menu-item pressable" bindtap="onChildProfiles" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-primary-bg">
+          <image class="menu-icon" src="/images/svg/ui/icon-child.svg" />
+            </view>
+            <text class="menu-title">{{labels.childProfileTitle}}</text>
+          </view>
+          <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+        <view class="menu-item pressable" bindtap="onWeeklyReport" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-primary-bg">
+          <image class="menu-icon" src="/images/svg/ui/icon-chart.svg" />
+            </view>
+            <text class="menu-title">{{labels.weeklyReportTitle}}</text>
+          </view>
+          <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">{{labels.ruleSection}}</text>
+      <view class="menu-card">
+        <view class="menu-item pressable" bindtap="onDailyLimit" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-secondary-bg">
+          <image class="menu-icon" src="/images/svg/ui/icon-chart.svg" />
+            </view>
+            <text class="menu-title">{{labels.dailyLimitTitle}}</text>
+          </view>
+          <view class="menu-right">
+            <text class="menu-value">{{dailyLimit}} pts</text>
+            <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">{{labels.accountSection}}</text>
+      <view class="menu-card">
+        <view class="menu-item pressable" bindtap="onBindGuide" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-neutral-bg">
+            <image class="menu-icon" src="/images/svg/ui/icon-share.svg" />
+            </view>
+            <text class="menu-title">{{labels.bindGuideTitle}}</text>
+          </view>
+            <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+        <view class="menu-item pressable" bindtap="onMcpVerify" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-neutral-bg">
+            <image class="menu-icon" src="/images/svg/ui/icon-key.svg" />
+            </view>
+            <view class="menu-text-col">
+              <text class="menu-title">{{labels.mcpTitle}}</text>
+              <text class="menu-sub">{{labels.mcpSubtitle}}</text>
+            </view>
+          </view>
+            <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+        <view class="menu-item pressable" bindtap="onProfileEdit" hover-class="is-press" hover-stay-time="60">
+          <view class="menu-left">
+            <view class="menu-icon-wrap icon-neutral-bg">
+            <image class="menu-icon" src="/images/svg/task/icon-edit.svg" />
+            </view>
+            <text class="menu-title">{{labels.profileTitle}}</text>
+          </view>
+            <image class="menu-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+      </view>
+    </view>
+
+    <view class="logout-btn pressable" bindtap="onLogout" hover-class="is-press" hover-stay-time="60">
+      <image class="logout-icon" src="/images/svg/ui/icon-cancel.svg" />
+      <text>{{labels.logout}}</text>
+    </view>
+  </view>
+</view>

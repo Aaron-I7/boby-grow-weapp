@@ -1,0 +1,127 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="tabs-wrap">
+      <view class="tabs-shell">
+        <view class="tab {{tab === 'reward' ? 'tab-active' : ''}} pressable" bindtap="onTabChange" data-tab="reward" hover-class="is-press" hover-stay-time="60">{{labels.tabReward}}</view>
+        <view class="tab {{tab === 'wish' ? 'tab-active' : ''}} pressable" bindtap="onTabChange" data-tab="wish" hover-class="is-press" hover-stay-time="60">{{labels.tabWish}}</view>
+      </view>
+    </view>
+
+    <view class="hero">
+      <text class="hero-chip">{{labels.chipPending}}</text>
+      <text class="hero-desc">{{tab === 'wish' ? labels.wishDesc : labels.rewardDesc}}</text>
+    </view>
+
+    <view class="overdue-tip" wx:if="{{auditSummary.hasOverdue}}">
+      <text class="overdue-tip-title">{{labels.overdueTitlePrefix}}{{auditSummary.overduePending}}{{labels.overdueTitleSuffix}}</text>
+      <text class="overdue-tip-desc">{{labels.overdueDetailPrefix}}{{auditSummary.overdueTask}}{{labels.overdueDetailMiddle}}{{auditSummary.overdueReward}}{{labels.overdueDetailEnd}}{{auditSummary.overdueWish}}</text>
+      <text class="overdue-tip-time" wx:if="{{overdueHint}}">{{overdueHint}}</text>
+    </view>
+
+    <view class="batch-toolbar">
+      <view class="batch-toggle pressable" bindtap="onToggleBatchMode" hover-class="is-press" hover-stay-time="60">
+        {{batchMode ? labels.batchCancel : labels.batchMode}}
+      </view>
+      <view class="batch-side" wx:if="{{batchMode}}">
+        <view class="batch-mini pressable" bindtap="onToggleSelectAll" hover-class="is-press" hover-stay-time="60">{{labels.batchSelectAll}}</view>
+        <view class="batch-mini pressable" bindtap="onClearSelection" hover-class="is-press" hover-stay-time="60">{{labels.batchClear}}</view>
+      </view>
+    </view>
+
+    <view class="batch-actions" wx:if="{{batchMode}}">
+      <view class="batch-btn-approve pressable" bindtap="onBatchApprove" hover-class="is-press" hover-stay-time="60">{{labels.batchApprove}}</view>
+      <view class="batch-btn-reject pressable" bindtap="onBatchReject" hover-class="is-press" hover-stay-time="60">{{labels.batchReject}}</view>
+    </view>
+
+    <block wx:if="{{tab === 'reward'}}">
+      <view class="audit-card" wx:for="{{rewardRequests}}" wx:key="id" bindtap="onToggleItemSelect" data-id="{{item.id}}">
+        <view class="batch-checkbox {{item.status === 'pending' && selectedRewardIds.indexOf(item.id) > -1 ? 'batch-checkbox-active' : ''}}" wx:if="{{batchMode && item.status === 'pending'}}"></view>
+        <text class="card-seq">{{item.seq}}</text>
+        <image wx:if="{{item.showStamp || item.stampAnimating}}" class="stamp {{item.stampAnimating ? 'stamp-animate' : 'stamp-static'}}" src="{{item.stampIcon}}" mode="aspectFit" />
+        <view class="card-top">
+          <view class="avatar-wrap">
+            <image class="audit-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+            <text class="avatar-tag">{{item.childName}}</text>
+          </view>
+          <view class="card-main">
+            <text class="card-subtitle">{{labels.rewardReq}}</text>
+            <text class="card-title">{{item.title}}</text>
+            <view class="card-meta-row">
+              <image class="card-meta-icon" src="/images/svg/task/icon-star.svg" />
+              <text class="card-meta">{{labels.costPrefix}}{{item.cost}}{{labels.pointsUnit}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="card-actions" wx:if="{{item.status === 'pending' && !batchMode}}">
+          <view class="btn-approve pressable" bindtap="onApproveRedeem" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">
+              <image class="btn-icon" src="/images/svg/ui/icon-check-circle.svg" />
+            <text>{{labels.approve}}</text>
+          </view>
+          <view class="btn-reject pressable" bindtap="onRejectRedeem" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">
+              <image class="btn-icon" src="/images/svg/ui/icon-cancel.svg" />
+            <text>{{labels.reject}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="empty" wx:if="{{rewardRequests.length === 0}}">{{labels.emptyReward}}</view>
+    </block>
+
+    <block wx:if="{{tab === 'wish'}}">
+      <view class="audit-card" wx:for="{{wishRequests}}" wx:key="id" bindtap="onToggleItemSelect" data-id="{{item.id}}">
+        <view class="batch-checkbox {{item.status === 'pending' && selectedWishIds.indexOf(item.id) > -1 ? 'batch-checkbox-active' : ''}}" wx:if="{{batchMode && item.status === 'pending'}}"></view>
+        <text class="card-seq">{{item.seq}}</text>
+        <image wx:if="{{item.showStamp || item.stampAnimating}}" class="stamp {{item.stampAnimating ? 'stamp-animate' : 'stamp-static'}}" src="{{item.stampIcon}}" mode="aspectFit" />
+        <view class="card-top">
+          <view class="avatar-wrap">
+            <image class="audit-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+            <text class="avatar-tag">{{item.childName}}</text>
+          </view>
+          <view class="card-main">
+            <text class="card-subtitle">{{labels.wishReq}}</text>
+            <text class="card-title">{{item.title}}</text>
+            <view class="card-meta-row">
+              <image class="card-meta-icon" src="/images/svg/ui/icon-pending.svg" />
+              <text class="card-meta">{{item.metaText}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="card-actions" wx:if="{{item.status === 'pending' && !batchMode}}">
+          <view class="btn-approve pressable" bindtap="onApproveWish" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">
+              <image class="btn-icon" src="/images/svg/ui/icon-check-circle.svg" />
+            <text>{{item.suggestedPoints > 0 || item.smartSuggestedPoints > 0 ? labels.quickApprove : labels.approve}}</text>
+          </view>
+          <view class="btn-adjust pressable" wx:if="{{item.suggestedPoints > 0 || item.smartSuggestedPoints > 0}}" bindtap="onAdjustWish" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">
+            <text>{{labels.adjustApprove}}</text>
+          </view>
+          <view class="btn-reject pressable" bindtap="onRejectWish" data-id="{{item.id}}" hover-class="is-press" hover-stay-time="60">
+              <image class="btn-icon" src="/images/svg/ui/icon-cancel.svg" />
+            <text>{{labels.reject}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="empty" wx:if="{{wishRequests.length === 0}}">{{labels.emptyWish}}</view>
+    </block>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showPointsModal}}" catchtouchmove="true">
+    <view class="points-modal">
+      <text class="points-modal-title">{{labels.setPointsTitle}}</text>
+      <text class="points-modal-hint">{{labels.setPointsHint}}</text>
+      <input
+        class="points-modal-input"
+        type="number"
+        placeholder="{{labels.pointsPlaceholder}}"
+        value="{{wishPointsInput}}"
+        bindinput="onPointsInput"
+        focus="{{showPointsModal}}"
+      />
+      <view class="points-modal-actions">
+        <view class="points-btn-cancel pressable" bindtap="onCancelPointsModal" hover-class="is-press" hover-stay-time="60">{{labels.cancelSetPoints}}</view>
+        <view class="points-btn-confirm pressable" bindtap="onConfirmWishPoints" hover-class="is-press" hover-stay-time="60">{{labels.confirmSetPoints}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+

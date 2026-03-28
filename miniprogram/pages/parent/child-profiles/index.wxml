@@ -1,0 +1,149 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="hero">
+      <text class="hero-title">{{labels.heroTitle}}</text>
+      <text class="hero-desc">{{labels.heroDesc}}</text>
+    </view>
+
+    <view wx:if="{{error}}" class="error-tip">{{error}}</view>
+
+    <view class="child-card" wx:if="{{childCard}}">
+      <view class="child-left">
+        <view class="avatar-ring">
+          <image class="child-avatar" src="{{childCard.avatarUrl}}" mode="aspectFill" />
+        </view>
+        <text class="level-badge">{{childCard.levelTag}}</text>
+      </view>
+      <view class="child-main">
+        <view class="name-row">
+          <text class="child-name">{{childCard.nickname}}</text>
+          <view class="role-tag">
+            <image class="role-icon" src="/images/svg/task/icon-star.svg" />
+            <text class="role-text">{{childCard.roleLabel}}</text>
+          </view>
+        </view>
+        <view class="stats-row">
+          <view class="stat-col">
+            <text class="stat-label">{{labels.currentPoints}}</text>
+            <text class="stat-val">{{childCard.currentPoints}}</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="stat-col">
+            <text class="stat-label">{{labels.totalDone}}</text>
+            <text class="stat-val stat-plus">{{totalCompleted}}{{labels.doneUnit}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="tabs-wrap" wx:if="{{childCard}}">
+      <view class="tabs-shell">
+        <view class="tab {{currentTab === 'overview' ? 'tab-active' : ''}}" bindtap="onTabChange" data-tab="overview">{{labels.tabOverview}}</view>
+        <view class="tab {{currentTab === 'detail' ? 'tab-active' : ''}}" bindtap="onTabChange" data-tab="detail">{{labels.tabDetail}}</view>
+      </view>
+    </view>
+
+    <block wx:if="{{currentTab === 'overview' && childCard}}">
+      <view class="panel-card">
+        <text class="panel-title">{{labels.chartTitle}}</text>
+        <view class="overview-main" wx:if="{{categorySummary.length}}">
+          <canvas class="pie-canvas" canvas-id="overviewPie" />
+          <view class="legend-list">
+            <view class="legend-item" wx:for="{{categorySummary}}" wx:key="categoryKey">
+              <view class="legend-dot" style="background: {{item.color}};"></view>
+              <text class="legend-name">{{item.categoryName}}</text>
+              <text class="legend-count">{{item.count}}{{labels.rankCountSuffix}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="empty-tip" wx:else>{{labels.chartEmpty}}</view>
+      </view>
+
+      <view class="panel-card">
+        <text class="panel-title">{{labels.rankTitle}}</text>
+        <scroll-view scroll-x class="category-scroll">
+          <view class="category-chip {{selectedCategory === '' ? 'chip-active' : ''}}" bindtap="onSelectCategory" data-key="">{{labels.allCategory}}</view>
+          <view
+            wx:for="{{categorySummary}}"
+            wx:key="categoryKey"
+            class="category-chip {{selectedCategory === item.categoryKey ? 'chip-active' : ''}}"
+            bindtap="onSelectCategory"
+            data-key="{{item.categoryKey}}"
+          >
+            {{item.categoryName}}
+          </view>
+        </scroll-view>
+
+        <view class="rank-list" wx:if="{{taskRankingDisplay.length}}">
+          <view class="rank-item" wx:for="{{taskRankingDisplay}}" wx:key="taskKey">
+            <view class="rank-left">
+              <text class="rank-name">{{item.ruleName}}</text>
+              <text class="rank-meta">{{item.categoryName}}</text>
+            </view>
+            <text class="rank-count">{{item.count}}{{labels.rankCountSuffix}}</text>
+          </view>
+        </view>
+        <view class="empty-tip" wx:else>{{labels.chartEmpty}}</view>
+      </view>
+
+      <view class="panel-card">
+        <text class="panel-title">{{labels.growthTitle}}</text>
+        <view class="growth-grid">
+          <view class="growth-item">
+            <text class="growth-label">{{labels.growthReflection}}</text>
+            <text class="growth-value">{{growthOverview.reflectionCount}}</text>
+          </view>
+          <view class="growth-item">
+            <text class="growth-label">{{labels.growthFeedback}}</text>
+            <text class="growth-value">{{growthOverview.feedbackCount}}</text>
+          </view>
+          <view class="growth-item">
+            <text class="growth-label">{{labels.growthRewardBehavior}}</text>
+            <text class="growth-value">{{growthOverview.rewardBehaviorCount}}</text>
+          </view>
+          <view class="growth-item">
+            <text class="growth-label">{{labels.growthStreak}}</text>
+            <text class="growth-value">{{growthOverview.reflectionStreak}}{{labels.growthStreakUnit}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{currentTab === 'detail' && childCard}}">
+      <view class="panel-card">
+        <text class="panel-title">{{labels.detailTitle}}</text>
+
+        <view class="loading-tip" wx:if="{{timelineLoading}}">{{labels.loadingMore}}</view>
+
+        <view class="timeline" wx:if="{{timelineGroups.length}}">
+          <view class="timeline-group" wx:for="{{timelineGroups}}" wx:key="dateKey">
+            <view class="group-date">{{item.dateLabel}}</view>
+            <view class="timeline-item" wx:for="{{item.items}}" wx:key="taskId">
+              <view class="item-left">
+                <view class="timeline-dot"></view>
+                <view class="item-main">
+                  <text class="item-title">{{item.ruleName}}</text>
+                  <text class="item-meta">{{item.categoryLabel}} | {{item.completedTimeText}}</text>
+                </view>
+              </view>
+              <text class="item-points">+{{item.points}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="empty-tip" wx:if="{{!timelineLoading && !timelineGroups.length}}">{{labels.emptyDetail}}</view>
+
+        <view class="load-more-wrap" wx:if="{{timelineGroups.length}}">
+          <view class="load-more-btn" wx:if="{{timelineHasMore && !timelineLoadingMore}}" bindtap="onLoadMoreTap">{{labels.loadMore}}</view>
+          <text class="loading-tip" wx:if="{{timelineLoadingMore}}">{{labels.loadingMore}}</text>
+          <text class="end-tip" wx:if="{{!timelineHasMore && !timelineLoadingMore}}">{{labels.noMore}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+

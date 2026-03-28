@@ -1,0 +1,30 @@
+<view class="container px-page">
+  <view class="invite-card card">
+    <view class="invite-icon-wrap">
+      <image class="icon-xl" src="/images/svg/ui/icon-home.svg" />
+    </view>
+    <text class="invite-title">{{familyName}}</text>
+    <text class="invite-desc">{{labels.desc}}</text>
+  </view>
+
+  <view class="form-card card">
+    <view class="form-item">
+      <text class="form-label">{{labels.nickname}}</text>
+      <input class="form-input" placeholder="{{labels.nicknamePlaceholder}}" value="{{nickname}}" bindinput="onInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.suggestion}}</text>
+      <view class="nick-grid">
+        <view class="nick-item {{nickname === item ? 'nick-active' : ''}}" wx:for="{{suggestions}}" wx:key="*this" bindtap="onSelectNick" data-val="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.inviteCode}}</text>
+      <input class="form-input" placeholder="{{labels.invitePlaceholder}}" value="{{inviteCode}}" bindinput="onInviteInput" />
+    </view>
+  </view>
+
+  <view class="btn-primary" bindtap="onJoin">{{loading ? labels.loading : labels.submit}}</view>
+</view>

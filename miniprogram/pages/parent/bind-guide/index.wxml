@@ -1,0 +1,68 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" showBack="{{showBack}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="intro card">
+      <text class="intro-title">{{labels.title}}</text>
+      <text class="intro-subtitle">{{labels.subtitle}}</text>
+    </view>
+
+    <view class="loading" wx:if="{{loading}}">鍔犺浇涓?..</view>
+
+    <block wx:if="{{!loading && !children.length}}">
+      <view class="empty card">
+        <text class="empty-title">{{labels.emptyTitle}}</text>
+        <text class="empty-desc">{{labels.emptyDesc}}</text>
+        <view class="parent-btn-primary" bindtap="onGoAddChild">{{labels.addChild}}</view>
+      </view>
+    </block>
+
+    <block wx:if="{{!loading && children.length}}">
+      <view class="child-card card" wx:for="{{children}}" wx:key="_id">
+        <view class="child-head">
+          <image class="child-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+          <view class="child-main">
+            <text class="child-name">{{item.nickname}}</text>
+            <text class="child-status">{{labels.bindStatus}}锛歿{item.bindText}}</text>
+          </view>
+        </view>
+
+        <view class="code-row">
+          <view class="code-main">
+            <text class="code-label">{{labels.verifyCode}}</text>
+            <text class="code-value">{{item.verifyCode || '--'}}</text>
+          </view>
+          <view class="code-btn" data-code="{{item.verifyCode}}" bindtap="onCopyCode">{{labels.copyCode}}</view>
+        </view>
+
+        <view class="bind-actions">
+          <view class="action-btn action-primary" data-id="{{item._id}}" bindtap="onGenerateQr">{{labels.genQr}}</view>
+          <view class="action-btn action-outline" data-id="{{item._id}}" bindtap="onPrepareShare">{{labels.prepareShare}}</view>
+          <view class="action-btn action-outline" data-id="{{item._id}}" bindtap="onCopyInviteLink">{{labels.copyInviteLink}}</view>
+          <view class="action-btn action-warn" wx:if="{{item.bindOpenId}}" data-id="{{item._id}}" bindtap="onUnbindChild">{{labels.unbindWechat}}</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="action-group">
+      <view class="btn-outline" bindtap="onGoChildManage">{{labels.goChildManage}}</view>
+      <view class="btn-muted" wx:if="{{isOnboarding}}" bindtap="onSkip">{{labels.skip}}</view>
+      <view class="parent-btn-primary" bindtap="onFinish">{{labels.finish}}</view>
+    </view>
+  </view>
+
+  <view class="qr-mask" wx:if="{{qrVisible}}" bindtap="onCloseQr">
+    <view class="qr-dialog" catchtap="noop">
+      <text class="qr-title">{{labels.qrTitle}} 路 {{qrChildName}}</text>
+      <text class="qr-hint">{{labels.qrHint}}</text>
+      <text class="qr-fallback-hint" wx:if="{{!qrFileId}}">{{labels.qrFallbackHint}}</text>
+      <image class="qr-image" wx:if="{{qrFileId}}" src="{{qrFileId}}" mode="aspectFit" />
+      <view class="qr-link" wx:if="{{qrShareLink || qrSharePath}}">{{qrShareLink || qrSharePath}}</view>
+      <view class="qr-actions">
+        <view class="qr-btn qr-btn-light" bindtap="onCopySharePath">{{labels.copyLink}}</view>
+        <view class="qr-btn qr-btn-dark" bindtap="onCloseQr">{{labels.close}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+

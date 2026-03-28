@@ -1,0 +1,275 @@
+{
+  "module": "audit-request",
+  "description": "CRUD + action APIs for audit center",
+  "table": {
+    "main": "audit_request",
+    "children": [
+      "audit_action_log",
+      "audit_assignment",
+      "audit_notice"
+    ]
+  },
+  "actions": [
+    {
+      "name": "createAuditRequest",
+      "method": "POST",
+      "path": "/audit/requests",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "familyId",
+          "requestType",
+          "bizId",
+          "title",
+          "createdBy"
+        ],
+        "properties": {
+          "familyId": "string",
+          "requestType": "enum(redeem|wish|task)",
+          "bizId": "string",
+          "applicantChildId": "string, optional",
+          "title": "string(1-120)",
+          "points": "int >= 0, optional",
+          "assigneeUserId": "string, optional",
+          "payloadJson": "object, optional",
+          "snapshotJson": "object, optional",
+          "createdBy": "string"
+        }
+      },
+      "response": {
+        "auditId": "string",
+        "createdAt": "datetime"
+      },
+      "dbFlow": [
+        "insert audit_request",
+        "insert audit_action_log(action_type=create)"
+      ]
+    },
+    {
+      "name": "getAuditRequest",
+      "method": "GET",
+      "path": "/audit/requests/{auditId}",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId"
+        ],
+        "properties": {
+          "auditId": "string"
+        }
+      },
+      "response": {
+        "auditId": "string",
+        "familyId": "string",
+        "requestType": "string",
+        "bizId": "string",
+        "applicantChildId": "string|null",
+        "title": "string",
+        "points": "int",
+        "status": "string",
+        "assigneeUserId": "string|null",
+        "decisionNote": "string|null",
+        "decisionBy": "string|null",
+        "decisionAt": "datetime|null",
+        "payloadJson": "object|null",
+        "snapshotJson": "object|null",
+        "createdBy": "string",
+        "updatedBy": "string|null",
+        "createdAt": "datetime",
+        "updatedAt": "datetime"
+      },
+      "dbFlow": [
+        "select one from audit_request where audit_id=? and deleted_at is null"
+      ]
+    },
+    {
+      "name": "listAuditRequests",
+      "method": "GET",
+      "path": "/audit/requests",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "familyId"
+        ],
+        "properties": {
+          "familyId": "string",
+          "status": "enum(pending|approved|rejected|canceled), optional",
+          "requestType": "enum(redeem|wish|task), optional",
+          "assigneeUserId": "string, optional",
+          "pageNo": "int >= 1, optional",
+          "pageSize": "int 1-100, optional"
+        }
+      },
+      "response": {
+        "list": "AuditRequest[]",
+        "total": "int",
+        "pageNo": "int",
+        "pageSize": "int"
+      },
+      "dbFlow": [
+        "query audit_request by family_id + filters + deleted_at is null"
+      ]
+    },
+    {
+      "name": "updateAuditRequest",
+      "method": "PUT",
+      "path": "/audit/requests/{auditId}",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId",
+          "updatedBy"
+        ],
+        "properties": {
+          "auditId": "string",
+          "title": "string(1-120), optional",
+          "points": "int >= 0, optional",
+          "assigneeUserId": "string, optional",
+          "payloadJson": "object, optional",
+          "snapshotJson": "object, optional",
+          "updatedBy": "string"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "update audit_request set changed fields, updated_by, updated_at"
+      ]
+    },
+    {
+      "name": "deleteAuditRequest",
+      "method": "DELETE",
+      "path": "/audit/requests/{auditId}",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId",
+          "updatedBy"
+        ],
+        "properties": {
+          "auditId": "string",
+          "updatedBy": "string"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "soft delete audit_request: set deleted_at=now(), updated_by=?",
+        "insert audit_action_log(action_type=cancel)"
+      ]
+    },
+    {
+      "name": "approveAuditRequest",
+      "method": "POST",
+      "path": "/audit/requests/{auditId}/approve",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId",
+          "operatorUserId"
+        ],
+        "properties": {
+          "auditId": "string",
+          "operatorUserId": "string",
+          "note": "string(0-255), optional"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "update audit_request status=approved, decision_by, decision_note, decision_at, updated_by",
+        "insert audit_action_log(action_type=approve)",
+        "insert audit_notice(notice_type=approved)"
+      ]
+    },
+    {
+      "name": "rejectAuditRequest",
+      "method": "POST",
+      "path": "/audit/requests/{auditId}/reject",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId",
+          "operatorUserId"
+        ],
+        "properties": {
+          "auditId": "string",
+          "operatorUserId": "string",
+          "note": "string(0-255), optional"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "update audit_request status=rejected, decision_by, decision_note, decision_at, updated_by",
+        "insert audit_action_log(action_type=reject)",
+        "insert audit_notice(notice_type=rejected)"
+      ]
+    },
+    {
+      "name": "assignAuditRequest",
+      "method": "POST",
+      "path": "/audit/requests/{auditId}/assign",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId",
+          "assigneeUserId",
+          "operatorUserId"
+        ],
+        "properties": {
+          "auditId": "string",
+          "assigneeUserId": "string",
+          "operatorUserId": "string",
+          "note": "string(0-255), optional",
+          "dueAt": "datetime, optional"
+        }
+      },
+      "response": {
+        "success": "boolean"
+      },
+      "dbFlow": [
+        "update audit_request assignee_user_id, updated_by",
+        "insert audit_assignment",
+        "insert audit_action_log(action_type=reassign)",
+        "insert audit_notice(notice_type=assign)"
+      ]
+    },
+    {
+      "name": "listAuditLogs",
+      "method": "GET",
+      "path": "/audit/requests/{auditId}/logs",
+      "cloudFunction": "audit",
+      "request": {
+        "required": [
+          "auditId"
+        ],
+        "properties": {
+          "auditId": "string"
+        }
+      },
+      "response": {
+        "list": "AuditActionLog[]"
+      },
+      "dbFlow": [
+        "select * from audit_action_log where audit_id=? order by created_at desc"
+      ]
+    }
+  ],
+  "compatibilityWithCurrentMiniProgram": {
+    "currentClientApis": [
+      "api.auditRedeem(requestId, approved, note)",
+      "api.auditWish(wishId, approved, suggestedPoints)"
+    ],
+    "migrationHint": [
+      "Step 1: write into audit_request while keeping old point APIs.",
+      "Step 2: let audit-center read listAuditRequests(type=redeem|wish).",
+      "Step 3: switch approve/reject to approveAuditRequest/rejectAuditRequest."
+    ]
+  }
+}
+

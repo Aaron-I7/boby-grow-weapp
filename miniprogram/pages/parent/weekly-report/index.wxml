@@ -1,0 +1,83 @@
+﻿<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content" wx:if="{{currentChild}}">
+    <view class="child-head">
+      <view class="child-left">
+        <image class="child-avatar" src="{{currentChild.avatarUrl}}" mode="aspectFill" />
+        <text class="child-name">{{currentChild.nickname}}</text>
+      </view>
+      <view class="child-actions">
+        <button class="share-btn pressable" open-type="share" hover-class="is-press" hover-stay-time="60">{{labels.shareReport}}</button>
+        <view class="switch-btn pressable" bindtap="onSwitchChild" hover-class="is-press" hover-stay-time="60">{{labels.switchChild}}</view>
+      </view>
+    </view>
+
+    <view class="digest-card">
+      <text class="digest-title">{{labels.digestTitle}}</text>
+      <text class="digest-desc">{{digest.digestText || labels.digestFallback}}</text>
+      <view class="digest-grid">
+        <view class="digest-item">
+          <text class="digest-label">{{labels.completedLabel}}</text>
+          <text class="digest-value">{{digest.weekCompletedCount}}</text>
+        </view>
+        <view class="digest-item">
+          <text class="digest-label">{{labels.pointsLabel}}</text>
+          <text class="digest-value">{{digest.weekPoints}}</text>
+        </view>
+        <view class="digest-item">
+          <text class="digest-label">{{labels.streakLabel}}</text>
+          <text class="digest-value">{{digest.reflectionStreak}}{{labels.streakUnit}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel" wx:if="{{digest.challengeList.length > 0}}">
+      <text class="panel-title">{{labels.challengeTitle}}</text>
+      <view class="challenge-grid">
+        <view class="challenge-item {{item.reached ? 'challenge-item-done' : ''}}" wx:for="{{digest.challengeList}}" wx:key="target">
+          <text class="challenge-item-name">{{item.title}}</text>
+          <text class="challenge-item-state" wx:if="{{item.reached}}">{{labels.challengeDone}}</text>
+          <text class="challenge-item-state" wx:if="{{!item.reached}}">{{labels.challengeRemainPrefix}}{{item.remaining}}{{labels.challengeRemainSuffix}}</text>
+          <text class="challenge-item-progress">{{item.progress}} / {{item.target}}{{labels.challengeTargetSuffix}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel">
+      <text class="panel-title">{{labels.signalTitle}}</text>
+      <view class="signal-grid">
+        <view class="signal-item">
+          <text class="signal-label">{{labels.reflectionLabel}}</text>
+          <text class="signal-value">{{growthOverview.reflectionCount}}</text>
+        </view>
+        <view class="signal-item">
+          <text class="signal-label">{{labels.feedbackLabel}}</text>
+          <text class="signal-value">{{growthOverview.feedbackCount}}</text>
+        </view>
+        <view class="signal-item">
+          <text class="signal-label">{{labels.rewardLabel}}</text>
+          <text class="signal-value">{{growthOverview.rewardBehaviorCount}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel">
+      <text class="panel-title">{{labels.timelineTitle}}</text>
+      <view class="timeline-empty" wx:if="{{timeline.length === 0}}">{{labels.emptyTimeline}}</view>
+      <view class="timeline-list" wx:if="{{timeline.length > 0}}">
+        <view class="timeline-item" wx:for="{{timeline}}" wx:key="id">
+          <view class="timeline-main">
+            <text class="timeline-type">{{item.typeText}}</text>
+            <text class="timeline-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+          </view>
+          <text class="timeline-time">{{item.timeText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!currentChild && !loading && !error}}">{{labels.emptyChild}}</view>
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+  <view class="error" wx:if="{{error}}">{{error}}</view>
+</view>

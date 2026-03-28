@@ -1,0 +1,82 @@
+.tabs {
+  white-space: nowrap;
+  padding: 24rpx 0 20rpx;
+}
+
+.tab {
+  display: inline-block;
+  margin-right: 16rpx;
+  padding: 14rpx 30rpx;
+  border-radius: 34rpx;
+  font-size: 26rpx;
+  color: var(--parent-text-secondary);
+  background: var(--parent-surface);
+  border: 1rpx solid var(--parent-border);
+}
+
+.tab-active {
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+  border-color: var(--parent-primary);
+}
+
+.rule-list {
+  padding-bottom: 180rpx;
+}
+
+.rule-card {
+  padding: 30rpx;
+  margin-bottom: 18rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rule-left {
+  flex: 1;
+  min-width: 0;
+  padding-right: 20rpx;
+}
+
+.rule-category {
+  margin-bottom: 10rpx;
+  background: var(--parent-primary-soft);
+  color: var(--parent-primary);
+}
+
+.rule-name {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--parent-text);
+}
+
+.rule-meta {
+  font-size: 24rpx;
+  color: var(--parent-text-hint);
+  line-height: 1.5;
+}
+
+.empty {
+  text-align: center;
+  padding: 80rpx 0;
+  color: var(--parent-text-hint);
+  font-size: 28rpx;
+}
+
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 200rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--parent-shadow-accent);
+  z-index: 10;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>管理协管家长</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#ffb870",
+              "inverse-primary": "#75d1ff",
+              "on-error": "#ffffff",
+              "tertiary": "#7c5716",
+              "on-surface-variant": "#3e484f",
+              "secondary": "#8b5000",
+              "primary": "#006688",
+              "surface-container-highest": "#e0e3e5",
+              "primary-container": "#4fc3f7",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-container": "#ff9800",
+              "on-primary-fixed": "#001e2b",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "surface-container": "#eceef0",
+              "on-primary-fixed-variant": "#004d67",
+              "tertiary-fixed-dim": "#f0be74",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#653900",
+              "background": "#f8f9fb",
+              "on-primary-container": "#004e69",
+              "error": "#ba1a1a",
+              "inverse-surface": "#2d3133",
+              "primary-fixed-dim": "#75d1ff",
+              "outline": "#6e7980",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#006688",
+              "tertiary-fixed": "#ffddb0",
+              "surface-container-low": "#f2f4f6",
+              "surface": "#f8f9fb",
+              "primary-fixed": "#c2e8ff",
+              "on-background": "#191c1e",
+              "tertiary-container": "#dfaf66",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#281800",
+              "on-surface": "#191c1e",
+              "on-secondary-fixed": "#2c1600",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed": "#ffdcbe",
+              "on-tertiary-fixed-variant": "#614000",
+              "outline-variant": "#bdc8d0",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#634100",
+              "on-secondary-fixed-variant": "#693c00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.fine-noise {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBtt2HkT6FiN0acl6T_NHOGY40fyM2cwZDrXQOEaDfp7jvz4AMUnwUj6eKE9CwXH-VFezpGBpePz3n2hIuYuqCHjXjRAsOcQXdz2gt9fOhVSjTTWj07da2CuswNLk3g8xPvu2L_SQJwlpHBDNH-vSF9ItRz5v21aW70toPe-8SazmJ7nC1x7vbMmsmwP3VF4odB-tsPXfWER0LoB5LhBoHmgW6txo2tcEsVmzCcmhvvokY6DI-DGANscrIu7X3qGBLGZ_Egqy5jiWHI);
+    opacity: 0.03;
+    pointer-events: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Fine Noise Texture Layer -->
+<div class="fixed inset-0 fine-noise z-0"></div>
+<!-- TopAppBar Section (Managed via Shared Components Logic) -->
+<header class="w-full top-0 sticky z-40 bg-slate-50 dark:bg-slate-900">
+<div class="flex items-center justify-between px-6 py-4 w-full bg-slate-100 dark:bg-slate-800/50">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full text-sky-700 dark:text-sky-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline font-semibold tracking-tight text-sky-800 dark:text-sky-300 text-lg">Manage Family</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border-2 border-white dark:border-slate-800 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a smiling middle-aged woman with kind eyes and warm lighting in a professional yet friendly setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-lEF2wn_ZAH_KD_mdyMMo0CzOYCQc7QfT-665jbJuKBHmeeR_nq3KH4jY3UV0DAmXRdCxx6UHtZdBBCKoIIN0nstyDXLom5MbB_Eh0Y7ZBaQ8cMN8M9ifk_b3FiBcyG6q8ZSqVGLhBZrOD6j9c6--CjHfL4pKbzpgWEWGQhB9y2Ats2AMj9AKSoqBWq9jqeGwdah4i8ICnz3b0O07hsy8XQlFRrjLOJmU9qpjTnwKyqGUWlZ3LV2dVS6b2T1wPRIrTZb6BLF3sTPi"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-3xl mx-auto px-6 py-8 relative z-10">
+<!-- Header Section with Asymmetric Layout -->
+<div class="mb-10 pl-2">
+<p class="font-label text-on-surface-variant uppercase tracking-widest text-[10px] mb-2">FAMILY NETWORK</p>
+<h2 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight leading-tight">
+                协同管理<span class="text-primary block md:inline md:ml-2">家长成员</span>
+</h2>
+<div class="h-1 w-12 bg-primary-container mt-4 rounded-full"></div>
+</div>
+<!-- Members Container (Tonal Layering instead of borders) -->
+<div class="space-y-6">
+<!-- Member Card: Parent (Mother) -->
+<div class="group flex items-center p-6 bg-surface-container-low rounded-xl transition-all duration-300 hover:bg-surface-container-high hover:translate-x-1">
+<div class="relative">
+<img alt="Mother" class="w-16 h-16 rounded-full border-4 border-surface-container-lowest" data-alt="softly lit portrait of a calm woman in her 30s with a welcoming smile, high-end photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTt-CRfWcA0YkuAr8zwSltIDwV-LsgG5hAwY-OfbFv5Zq0AksNsNNhopD49WfW3y0dfXS8X3VRXi4BxGX4abdGfzBxaBwa9ecqoZztnnw1PeRyBzsMIO5tXIBbuUx3pDVnqKwyYUy-zI0ryDsA6idBCNCiCalJKvrHCu9lNKLFSH5g5BudQqMvLUR_JiF6yBNuLY73vEn511yKzAuAFBf5ovbIX0tw-vao7hh56FYieSsEvvkjgmP-Lk4kbRMh4668Q8fuCu871Mou"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary text-[10px] px-2 py-0.5 rounded-full font-bold">主管理员</div>
+</div>
+<div class="ml-6 flex-1">
+<h3 class="font-headline text-xl font-bold text-on-surface">妈妈</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<p class="font-label text-on-surface-variant text-[12px] uppercase tracking-wider">加入时间: 2023-05-20</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- Member Card: Grandparent -->
+<div class="group flex items-center p-6 bg-surface-container-low rounded-xl transition-all duration-300 hover:bg-surface-container-high hover:translate-x-1">
+<div class="relative">
+<img alt="Grandfather" class="w-16 h-16 rounded-full border-4 border-surface-container-lowest" data-alt="distinguished older gentleman with grey hair and a warm grandfatherly expression, studio portrait with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1CE-9HO7GHB3YtyvvCq0I56izDSsEg2YBlIcROg5PzATeKuYrr3CkLB81wXEeErLiX56os667sSb2xEzqCBpyQg47aivNWnC-9ifFYXdAx3qy7hZ2NFPYduaaJii3SmzUlSj37lqCjlqd0oSmS05iSHqu1UM3vkS0HCuwJr9hjOh2hbGlrMS9x7UMQsgNsXFkGcG-q5e0vGx3D3ZBXW7BDXJYrwJK7po03lg6CT0kkDaLRLccKNCliXRqmaA1-U-UqPDf4nBSir4W"/>
+</div>
+<div class="ml-6 flex-1">
+<h3 class="font-headline text-xl font-bold text-on-surface">爷爷</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<p class="font-label text-on-surface-variant text-[12px] uppercase tracking-wider">加入时间: 2023-11-12</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-tighter">协管员</span>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Bento-style empty slots/info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+<div class="bg-primary-container/10 p-6 rounded-xl border border-primary-container/20">
+<span class="material-symbols-outlined text-primary mb-3 text-3xl" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<h4 class="font-headline font-bold text-on-primary-container mb-2 text-lg">关于协管权限</h4>
+<p class="text-sm text-on-primary-container/80 leading-relaxed">协管家长可以查看孩子的所有日常动态，但无法删除主要家庭记录。</p>
+</div>
+<div class="bg-secondary-container/10 p-6 rounded-xl border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary mb-3 text-3xl" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<h4 class="font-headline font-bold text-on-secondary-container mb-2 text-lg">安全提示</h4>
+<p class="text-sm text-on-secondary-container/80 leading-relaxed">邀请前请确认对方身份，协管员将拥有访问个人档案的权限。</p>
+</div>
+</div>
+</div>
+<!-- Buffer for the fixed button -->
+<div class="h-32"></div>
+</main>
+<!-- FAB Action Button - Contextually placed at bottom center with premium styling -->
+<div class="fixed bottom-0 left-0 right-0 p-8 z-50 pointer-events-none">
+<div class="max-w-3xl mx-auto flex justify-center">
+<button class="pointer-events-auto flex items-center justify-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full shadow-[0_12px_24px_-4px_rgba(0,102,136,0.2)] hover:shadow-[0_16px_32px_-4px_rgba(0,102,136,0.3)] hover:scale-[1.02] transition-all duration-300 active:scale-95 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-500" data-icon="person_add" style="font-variation-settings: 'FILL' 1;">person_add</span>
+<span class="font-headline font-bold text-lg tracking-wide">邀请新协管员</span>
+</button>
+</div>
+</div>
+</body></html>

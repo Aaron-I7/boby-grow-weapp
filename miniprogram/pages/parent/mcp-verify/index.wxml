@@ -1,0 +1,55 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" bind:back="onBack" />
+
+  <view class="content">
+    <scroll-view class="child-scroll" scroll-x enable-flex>
+      <view class="child-chip {{currentIdx === index ? 'chip-active' : ''}} pressable" wx:for="{{children}}" wx:key="id" data-idx="{{index}}" bindtap="onSelectChild" hover-class="is-press" hover-stay-time="60">
+        <image class="chip-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+        <text class="chip-name">{{item.nickname}}</text>
+      </view>
+      <view class="chip-add">
+      <image class="chip-add-icon" src="/images/svg/ui/icon-add-circle.svg" />
+      </view>
+    </scroll-view>
+
+    <view class="privacy-card">
+      <image class="privacy-icon" src="/images/svg/ui/icon-key.svg" />
+      <text class="privacy-text">{{labels.privacyText}}</text>
+    </view>
+
+    <view class="code-hero">
+      <view class="code-top-line"></view>
+      <text class="code-label">{{currentChild.nickname}}{{labels.codeLabelSuffix}}</text>
+      <view class="code-row">
+        <text class="code-num">{{code.slice(0, 3)}}</text>
+        <view class="code-dot"></view>
+        <text class="code-num">{{code.slice(3, 6)}}</text>
+      </view>
+    </view>
+
+    <view class="action-col">
+      <view class="action-primary pressable" bindtap="onCopy" hover-class="is-press" hover-stay-time="60">
+      <image class="action-icon" src="/images/svg/ui/icon-list.svg" />
+        <text>{{labels.copy}}</text>
+      </view>
+      <view class="action-secondary pressable" bindtap="onReset" hover-class="is-press" hover-stay-time="60">
+      <image class="action-icon" src="/images/svg/ui/icon-switch.svg" />
+        <text>{{labels.reset}}</text>
+      </view>
+    </view>
+
+    <view class="tip-card">
+      <view class="tip-icon-wrap">
+      <image class="tip-icon" src="/images/svg/ui/icon-info.svg" />
+      </view>
+      <text class="tip-text">{{labels.tipText}}</text>
+    </view>
+
+    <view class="security-divider">
+      <view class="line"></view>
+      <text class="security-title">{{labels.securityTitle}}</text>
+      <view class="line"></view>
+    </view>
+    <text class="security-desc">{{labels.securityDesc}}</text>
+  </view>
+</view>

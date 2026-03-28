@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>审核中心 - Parent Executive Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fb;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 200px;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            opacity: 0.97;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-indent {
+            margin-left: 5%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-tint": "#006688",
+                "surface-container": "#eceef0",
+                "outline-variant": "#bdc8d0",
+                "on-background": "#191c1e",
+                "outline": "#6e7980",
+                "on-primary-fixed-variant": "#004d67",
+                "on-tertiary-container": "#634100",
+                "error": "#ba1a1a",
+                "surface-container-low": "#f2f4f6",
+                "on-error-container": "#93000a",
+                "inverse-on-surface": "#eff1f3",
+                "primary-container": "#4fc3f7",
+                "tertiary-fixed": "#ffddb0",
+                "primary": "#006688",
+                "surface": "#f8f9fb",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#f8f9fb",
+                "on-tertiary-fixed": "#281800",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#dfaf66",
+                "on-surface-variant": "#3e484f",
+                "secondary": "#8b5000",
+                "secondary-fixed-dim": "#ffb870",
+                "secondary-container": "#ff9800",
+                "error-container": "#ffdad6",
+                "background": "#f8f9fb",
+                "surface-container-highest": "#e0e3e5",
+                "on-primary": "#ffffff",
+                "on-secondary-container": "#653900",
+                "tertiary": "#7c5716",
+                "inverse-surface": "#2d3133",
+                "inverse-primary": "#75d1ff",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#2c1600",
+                "surface-container-high": "#e6e8ea",
+                "on-primary-container": "#004e69",
+                "tertiary-fixed-dim": "#f0be74",
+                "on-tertiary-fixed-variant": "#614000",
+                "on-secondary-fixed-variant": "#693c00",
+                "on-error": "#ffffff",
+                "surface-dim": "#d8dadc",
+                "surface-variant": "#e0e3e5",
+                "primary-fixed-dim": "#75d1ff",
+                "on-surface": "#191c1e",
+                "primary-fixed": "#c2e8ff",
+                "secondary-fixed": "#ffdcbe",
+                "on-primary-fixed": "#001e2b"
+              },
+              fontFamily: {
+                "headline": ["Plus Jakarta Sans"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface antialiased">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-slate-50/80 backdrop-blur-md dark:bg-slate-900/80 border-b border-surface-container-highest">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-full active:scale-95 duration-150 text-sky-700 dark:text-sky-400">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-sky-900 dark:text-sky-100 font-['Plus_Jakarta_Sans'] tracking-tight">审核中心</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 font-medium text-sm hidden md:block">家长档案</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest border-2 border-primary-container/30">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a sophisticated woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH8bTI9SrLjoDbplY2h9IDAg1I00BgSr81MHPqMOIDwbWuSDCO7p8gwnfJoOhgQSfSrGpzLv_YrxMgiXphZ9uPOLekPU-N1wETRJZ5-7ERV7d2IBqMFtuebs6qu7MT8s2stEvmjqp6LQsal3y9goEX5or5KflcyYnnX1UyzblsDGmXVmhGTYbBi4NLONB8eCj0w_9OTdIY_RGzyEK1nESTMmBzzgp-LBzMcTHaAfoeUxUgJKFyfChwMY2Q1S5Sbmvb-Awoz69byijC"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto pb-12">
+<!-- Tabs Navigation -->
+<div class="flex gap-1 mb-8 p-1 bg-surface-container-high rounded-xl w-fit mx-auto md:mx-0 editorial-indent">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-on-surface-variant/60 hover:text-on-surface-variant" id="tab-rewards">奖励兑换</button>
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all bg-surface-container-lowest text-primary shadow-sm" id="tab-wishes">愿望申请</button>
+</div>
+<!-- Editorial Header Section -->
+<section class="mb-10 editorial-indent" id="header-section">
+<div class="inline-block px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-[10px] uppercase tracking-widest font-bold mb-4">待审核申请</div>
+<h2 class="text-5xl font-extrabold font-headline text-on-surface-variant tracking-tighter mb-4" id="section-title">
+                愿望审核
+            </h2>
+<p class="text-on-surface-variant/70 max-w-md leading-relaxed font-body" id="section-desc">孩子们提交的新愿望。您可以将这些愿望加入积分商店，作为他们努力的目标。</p>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="content-grid">
+<!-- Wish Card 1 -->
+<div class="group relative bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:translate-y-[-4px]">
+<div class="absolute top-0 right-0 p-6">
+<span class="text-3xl font-black text-primary-container/20 font-headline">01</span>
+</div>
+<div class="flex items-start gap-6 mb-8">
+<div class="relative">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="joyful young boy laughing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWbLFtJ9dBt6EnKp1345noaPq3hdQykvirYSi42FPEIeQZAQMj29BQnPRMnPVmMXluLkaKr6L4qy_-RbZcdmPFpifqya8dRO0bzGuhx8J5kA5Ifr2dPGtPJeUFWvUsHGyGIYUZZA_jJbCc_E-dVjrOfmGR28BaeZiANJhaTcGad2yh-u8C63WB3TxLI9iZmbS0dLws3pxwIuVPAsPWJYlNcyZufrsyYErxiyvakF5gguDXrzVU7GB7p7CPhrcd2EIVevf1rVDvEsWx"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary px-2 py-1 rounded text-[10px] font-bold">小明</div>
+</div>
+<div class="flex-1">
+<div class="text-on-surface-variant/60 text-xs font-bold tracking-widest mb-1 uppercase">新愿望申请</div>
+<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-2">想要一个新足球</h3>
+<div class="flex items-center gap-2 text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="pending">pending</span>
+<span class="text-sm">等待家长设定积分</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+                        通过
+                    </button>
+<button class="flex-1 bg-surface-container-low text-on-surface-variant h-12 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-error-container/20 hover:text-error transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="cancel">cancel</span>
+                        驳回
+                    </button>
+</div>
+</div>
+<!-- Wish Card 2 -->
+<div class="group relative bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:translate-y-[-4px]">
+<div class="absolute top-0 right-0 p-6">
+<span class="text-3xl font-black text-primary-container/20 font-headline">02</span>
+</div>
+<div class="flex items-start gap-6 mb-8">
+<div class="relative">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="cute young girl with pigtails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_9nAFt5UhekVDcwKbgpWxuoBSTSkI8rA6k59jbuamsWrjX-74GXa2gAh-2jRDyE02qbuxmX2H_iBIcJv6LqSWqLs4UpHEPVyn7zyc963A0ormbXvDESkivZSN091aqq7w1ViPm2Pj-FEHcrMLE6PDpBM8vP0OsQ2Vkzs1RfMGXblpaEBEXqqhlAPG3UIG_3HTX1JdDXUqe57-eaBAsY4CE7mI_8StYHIZwQVNcJBR5C0Ubj5cAlQUcLHuywKMmFJwt8XVg7q_qiNF"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary px-2 py-1 rounded text-[10px] font-bold">小红</div>
+</div>
+<div class="flex-1">
+<div class="text-on-surface-variant/60 text-xs font-bold tracking-widest mb-1 uppercase">新愿望申请</div>
+<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-2">吃一顿自助大餐</h3>
+<div class="flex items-center gap-2 text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="stars" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="">建议: 2000 积分</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+                        通过
+                    </button>
+<button class="flex-1 bg-surface-container-low text-on-surface-variant h-12 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-error-container/20 hover:text-error transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="cancel">cancel</span>
+                        驳回
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<script>
+    const tabRewards = document.getElementById('tab-rewards');
+    const tabWishes = document.getElementById('tab-wishes');
+    const sectionTitle = document.getElementById('section-title');
+    const sectionDesc = document.getElementById('section-desc');
+    const contentGrid = document.getElementById('content-grid');
+
+    const rewardsHTML = `
+        <!-- Item Card 1 -->
+        <div class="group relative bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:translate-y-[-4px]">
+            <div class="absolute top-0 right-0 p-6">
+                <span class="text-3xl font-black text-primary-container/20 font-headline">01</span>
+            </div>
+            <div class="flex items-start gap-6 mb-8">
+                <div class="relative">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWbLFtJ9dBt6EnKp1345noaPq3hdQykvirYSi42FPEIeQZAQMj29BQnPRMnPVmMXluLkaKr6L4qy_-RbZcdmPFpifqya8dRO0bzGuhx8J5kA5Ifr2dPGtPJeUFWvUsHGyGIYUZZA_jJbCc_E-dVjrOfmGR28BaeZiANJhaTcGad2yh-u8C63WB3TxLI9iZmbS0dLws3pxwIuVPAsPWJYlNcyZufrsyYErxiyvakF5gguDXrzVU7GB7p7CPhrcd2EIVevf1rVDvEsWx">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary px-2 py-1 rounded text-[10px] font-bold">小明</div>
+                </div>
+                <div class="flex-1">
+                    <div class="text-on-surface-variant/60 text-xs font-bold tracking-widest mb-1 uppercase">奖励申请</div>
+                    <h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-2">额外游戏时间</h3>
+                    <div class="flex items-center gap-2 text-primary font-semibold">
+                        <span class="material-symbols-outlined text-sm" data-icon="stars" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        <span>500 积分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <button class="flex-1 bg-primary text-on-primary h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95">
+                    <span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+                    通过
+                </button>
+                <button class="flex-1 bg-surface-container-low text-on-surface-variant h-12 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-error-container/20 hover:text-error transition-colors active:scale-95">
+                    <span class="material-symbols-outlined text-xl" data-icon="cancel">cancel</span>
+                    驳回
+                </button>
+            </div>
+        </div>
+        <!-- Item Card 2 -->
+        <div class="group relative bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:translate-y-[-4px]">
+            <div class="absolute top-0 right-0 p-6">
+                <span class="text-3xl font-black text-primary-container/20 font-headline">02</span>
+            </div>
+            <div class="flex items-start gap-6 mb-8">
+                <div class="relative">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_9nAFt5UhekVDcwKbgpWxuoBSTSkI8rA6k59jbuamsWrjX-74GXa2gAh-2jRDyE02qbuxmX2H_iBIcJv6LqSWqLs4UpHEPVyn7zyc963A0ormbXvDESkivZSN091aqq7w1ViPm2Pj-FEHcrMLE6PDpBM8vP0OsQ2Vkzs1RfMGXblpaEBEXqqhlAPG3UIG_3HTX1JdDXUqe57-eaBAsY4CE7mI_8StYHIZwQVNcJBR5C0Ubj5cAlQUcLHuywKMmFJwt8XVg7q_qiNF">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary px-2 py-1 rounded text-[10px] font-bold">小红</div>
+                </div>
+                <div class="flex-1">
+                    <div class="text-on-surface-variant/60 text-xs font-bold tracking-widest mb-1 uppercase">奖励申请</div>
+                    <h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-2">周末去公园</h3>
+                    <div class="flex items-center gap-2 text-primary font-semibold">
+                        <span class="material-symbols-outlined text-sm" data-icon="stars" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        <span>1200 积分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <button class="flex-1 bg-primary text-on-primary h-12 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95">
+                    <span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+                    通过
+                </button>
+                <button class="flex-1 bg-surface-container-low text-on-surface-variant h-12 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-error-container/20 hover:text-error transition-colors active:scale-95">
+                    <span class="material-symbols-outlined text-xl" data-icon="cancel">cancel</span>
+                    驳回
+                </button>
+            </div>
+        </div>
+    `;
+    
+    const wishesHTML = contentGrid.innerHTML;
+
+    function setTab(activeTab) {
+        if (activeTab === 'rewards') {
+            tabRewards.className = "px-6 py-2.5 rounded-lg text-sm font-bold transition-all bg-surface-container-lowest text-primary shadow-sm";
+            tabWishes.className = "px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-on-surface-variant/60 hover:text-on-surface-variant";
+            sectionTitle.innerText = "奖励审核";
+            sectionDesc.innerText = "查看并管理孩子的奖励申请。保持激励的一致性并追踪成长里程碑。";
+            contentGrid.innerHTML = rewardsHTML;
+        } else {
+            tabWishes.className = "px-6 py-2.5 rounded-lg text-sm font-bold transition-all bg-surface-container-lowest text-primary shadow-sm";
+            tabRewards.className = "px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-on-surface-variant/60 hover:text-on-surface-variant";
+            sectionTitle.innerText = "愿望审核";
+            sectionDesc.innerText = "孩子们提交的新愿望。您可以将这些愿望加入积分商店，作为他们努力的目标。";
+            contentGrid.innerHTML = wishesHTML;
+        }
+    }
+
+    tabRewards.onclick = () => setTab('rewards');
+    tabWishes.onclick = () => setTab('wishes');
+</script>
+</body></html>

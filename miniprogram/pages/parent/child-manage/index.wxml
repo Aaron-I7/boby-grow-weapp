@@ -1,0 +1,98 @@
+<view class="container">
+  <nav-bar
+    mode="primary"
+    title="{{navTitle}}"
+    subtitle="{{navSubtitle}}"
+    avatarUrl="{{navAvatar}}"
+    avatarEmpty="{{navAvatarEmpty}}"
+    bind:switchchild="onSwitchChild"
+  />
+
+  <view class="action-bar">
+    <view class="action-btn" bindtap="onAddChild">
+      <image class="inline-icon-xs" src="/images/svg/ui/icon-person-add.svg" />{{labels.addChild}}
+    </view>
+    <view class="action-btn action-btn-outline" bindtap="onBindGuide">
+      <image class="inline-icon-xs" src="/images/svg/ui/icon-key.svg" />{{labels.bindGuide}}
+    </view>
+    <view class="action-btn action-btn-outline" bindtap="onCoadminManage">
+      <image class="inline-icon-xs" src="/images/svg/ui/icon-group.svg" />{{labels.coadminManage}}
+    </view>
+  </view>
+
+  <view class="child-card card" wx:for="{{children}}" wx:key="_id" bindtap="onChildDetail" data-id="{{item._id}}">
+    <view class="child-header">
+      <image class="child-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+      <view class="child-info">
+        <text class="child-name">{{item.nickname}}</text>
+        <text class="child-level">{{labels.levelPrefix}}{{item.level}} | {{item.age}}{{labels.ageUnit}}</text>
+      </view>
+      <view class="child-points">
+        <text class="points-num">{{item.currentPoints}}</text>
+        <text class="points-label">{{labels.points}}</text>
+      </view>
+    </view>
+    <view class="child-footer">
+      <text class="verify-code">{{labels.verifyCode}}{{item.verifyCode}}</text>
+      <text class="edit-btn-text" catchtap="onEditChild" data-id="{{item._id}}">{{labels.edit}}</text>
+    </view>
+  </view>
+
+  <view class="add-hint" wx:if="{{children.length < 3}}" bindtap="onAddChild">
+    <text>{{labels.addMore}}</text>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showEditModal}}" catchtouchmove="true">
+    <view class="edit-modal">
+      <text class="edit-title">{{labels.editTitle}}</text>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.nickname}}</text>
+        <input class="form-input" value="{{editNickname}}" bindinput="onEditInput" data-field="editNickname" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.age}}</text>
+        <input class="form-input" type="number" value="{{editAge}}" bindinput="onEditInput" data-field="editAge" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.gender}}</text>
+        <picker range="{{editGenderList}}" value="{{editGenderIndex}}" bindchange="onEditGenderChange">
+          <view class="form-input picker-value">
+            <text>{{editGenderList[editGenderIndex]}}</text>
+            <image class="picker-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item form-item-avatar">
+        <view class="avatar-head">
+          <text class="form-label">{{labels.avatar}}</text>
+          <view class="mode-switch">
+            <text class="mode-item {{editAvatarMode==='recommended' ? 'mode-active' : ''}}" data-mode="recommended" bindtap="onEditAvatarModeChange">{{labels.avatarRecommended}}</text>
+            <text class="mode-item {{editAvatarMode==='all' ? 'mode-active' : ''}}" data-mode="all" bindtap="onEditAvatarModeChange">{{labels.avatarAll}}</text>
+          </view>
+        </view>
+        <view class="avatar-grid">
+          <view
+            wx:for="{{editAvatarOptions}}"
+            wx:key="key"
+            class="avatar-cell {{editAvatarKey===item.key ? 'avatar-selected' : ''}}"
+            data-key="{{item.key}}"
+            data-url="{{item.path}}"
+            bindtap="onSelectEditAvatar"
+          >
+            <image class="avatar-option" src="{{item.path}}" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+
+      <view class="modal-actions">
+        <view class="btn-cancel pressable" bindtap="onCancelEdit" hover-class="is-press" hover-stay-time="60">{{labels.cancel}}</view>
+        <view class="btn-confirm pressable" bindtap="onConfirmEdit" hover-class="is-press" hover-stay-time="60">{{labels.confirm}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+

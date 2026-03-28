@@ -1,0 +1,24 @@
+<view class="child-container">
+  <view class="hero-card">
+  <image class="icon-md" src="/images/svg/ui/icon-pending.svg" style="margin-right:12rpx;" />
+    <text class="hero-text">有 {{pendingCount}} 个任务等待审核</text>
+  </view>
+
+  <view class="submit-card" wx:for="{{tasks}}" wx:key="_id">
+    <view class="submit-row">
+      <view class="submit-info">
+        <text class="submit-name">{{item.ruleName}}</text>
+        <text class="submit-time">{{item.createdAt}}</text>
+      </view>
+      <view class="tag {{item.auditStatus === 'pending' ? 'tag-pending' : item.auditStatus === 'approved' ? 'tag-approved' : 'tag-rejected'}}">
+        {{item.auditStatus === 'pending' ? '等待中' : item.auditStatus === 'approved' ? '已通过' : '未通过'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{tasks.length === 0}}">暂无提交记录</view>
+
+  <view class="encourage" wx:if="{{tasks.length > 0}}">
+    <text>继续加油，你做得很棒！</text>
+  </view>
+</view>

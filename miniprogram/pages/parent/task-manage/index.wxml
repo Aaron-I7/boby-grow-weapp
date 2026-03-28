@@ -1,0 +1,31 @@
+<view class="container">
+  <nav-bar
+    mode="primary"
+    title="{{navTitle}}"
+    subtitle="{{navSubtitle}}"
+    avatarUrl="{{navAvatar}}"
+    avatarEmpty="{{navAvatarEmpty}}"
+    bind:switchchild="onSwitchChild"
+  />
+
+  <scroll-view scroll-x class="tabs" enable-flex="true" show-scrollbar="false">
+    <view class="tab pressable {{currentCategory === '' ? 'tab-active' : ''}}" bindtap="onCategoryChange" data-key="" hover-class="is-press" hover-stay-time="60">{{labels.all}}</view>
+    <view class="tab pressable {{currentCategory === item.key ? 'tab-active' : ''}}" wx:for="{{categories}}" wx:key="key" bindtap="onCategoryChange" data-key="{{item.key}}" hover-class="is-press" hover-stay-time="60">{{item.name}}</view>
+  </scroll-view>
+
+  <view class="rule-list">
+    <view class="rule-card parent-card pressable" wx:for="{{rules}}" wx:key="_id" hover-class="is-press" hover-stay-time="60">
+      <view class="rule-left">
+        <view class="rule-category tag">{{categoryMap[item.category]}}</view>
+        <text class="rule-name">{{item.name}}</text>
+        <text class="rule-meta">{{labels.pointsPrefix}}{{item.points}}{{labels.pointsUnit}} · {{item.frequency === 'daily' ? labels.freqDaily : item.frequency === 'weekly' ? labels.freqWeekly : labels.freqOnce}} · {{labels.dailyLimitPrefix}}{{item.dailyLimit}}{{labels.dailyLimitSuffix}}</text>
+      </view>
+      <switch checked="{{item.enabled}}" bindchange="onToggleRule" data-id="{{item._id}}" data-enabled="{{item.enabled}}" color="#0F6F92" />
+    </view>
+    <view class="empty" wx:if="{{rules.length === 0}}">{{labels.empty}}</view>
+  </view>
+
+  <view class="fab pressable" bindtap="onAddTask" hover-class="is-press" hover-stay-time="60">
+    <image class="icon-md" src="/images/svg/ui/icon-add-circle.svg" />
+  </view>
+</view>

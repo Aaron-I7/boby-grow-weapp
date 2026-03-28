@@ -1,0 +1,168 @@
+﻿{
+    "failedCases":  9,
+    "details":  [
+                    {
+                        "name":  "L1.action-mapping.v2-implemented",
+                        "status":  "passed",
+                        "durationMs":  29,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.login.return-schema",
+                        "status":  "passed",
+                        "durationMs":  4129,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.family.create-or-get.return+persist",
+                        "status":  "passed",
+                        "durationMs":  4064,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.setFamilyMode.persist",
+                        "status":  "passed",
+                        "durationMs":  4066,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.addChild.write+return",
+                        "status":  "passed",
+                        "durationMs":  6102,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.editChild.persist",
+                        "status":  "passed",
+                        "durationMs":  4053,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.profile.update+get.persist",
+                        "status":  "passed",
+                        "durationMs":  4050,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.updateDailyLimit.persist",
+                        "status":  "passed",
+                        "durationMs":  4053,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "user.coadmin.add+remove.persist",
+                        "status":  "passed",
+                        "durationMs":  10139,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "task.createRule.write+return",
+                        "status":  "failed",
+                        "durationMs":  6089,
+                        "error":  "Command failed: C:\\nvm4w\\nodejs\\node.exe E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js fn invoke task -e cloudbase-1g26i1txc0ae8f4b --params {\\\"dailyLimit\\\":1,\\\"intrinsicTag\\\":\\\"autonomy\\\",\\\"action\\\":\\\"createRule\\\",\\\"frequency\\\":\\\"daily\\\",\\\"choiceOptions\\\":[\\\"Start with 5 minutes\\\",\\\"Start with the easiest one\\\"],\\\"category\\\":\\\"habit\\\",\\\"points\\\":15,\\\"name\\\":\\\"TCRule_20260327181628\\\",\\\"reflectionRequired\\\":true,\\\"purposeText\\\":\\\"Build a stable habit\\\",\\\"weekdays\\\":[],\\\"enabled\\\":true}\n@{ExitCode=1; StdOut=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 107 (line 1 column 108)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string; StdErr=- Loading data...; Combined=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 107 (line 1 column 108)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string\n- Loading data...}.Combined"
+                    },
+                    {
+                        "name":  "task.updateRule.persist",
+                        "status":  "failed",
+                        "durationMs":  3,
+                        "error":  "The property \u0027ruleId\u0027 cannot be found on this object. Verify that the property exists."
+                    },
+                    {
+                        "name":  "task.toggleRule.persist",
+                        "status":  "failed",
+                        "durationMs":  1,
+                        "error":  "The property \u0027ruleId\u0027 cannot be found on this object. Verify that the property exists."
+                    },
+                    {
+                        "name":  "task.getTasks.return+submitTask.persist",
+                        "status":  "failed",
+                        "durationMs":  6071,
+                        "error":  "Command failed: C:\\nvm4w\\nodejs\\node.exe E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js fn invoke task -e cloudbase-1g26i1txc0ae8f4b --params {\\\"reflection\\\":\\\"I finished the hardest step first and then continued.\\\",\\\"taskId\\\":\\\"task_1774606637546_1civf3\\\",\\\"action\\\":\\\"submitTask\\\"}\n@{ExitCode=1; StdOut=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 16 (line 1 column 17)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string; StdErr=- Loading data...; Combined=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 16 (line 1 column 17)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string\n- Loading data...}.Combined"
+                    },
+                    {
+                        "name":  "task.auditTask.persist",
+                        "status":  "failed",
+                        "durationMs":  2,
+                        "error":  "The property \u0027taskId\u0027 cannot be found on this object. Verify that the property exists."
+                    },
+                    {
+                        "name":  "task.completeTask.persist",
+                        "status":  "failed",
+                        "durationMs":  2030,
+                        "error":  "The property \u0027taskId\u0027 cannot be found on this object. Verify that the property exists."
+                    },
+                    {
+                        "name":  "task.analytics.return-schema",
+                        "status":  "passed",
+                        "durationMs":  7104,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.createReward.write+return",
+                        "status":  "passed",
+                        "durationMs":  8125,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.redeemReward.write+return",
+                        "status":  "failed",
+                        "durationMs":  3040,
+                        "error":  "Command failed: C:\\nvm4w\\nodejs\\node.exe E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js fn invoke point -e cloudbase-1g26i1txc0ae8f4b --params {\\\"reason\\\":\\\"I want to complete an experience reward with my parent.\\\",\\\"rewardId\\\":\\\"reward_1774606656603_jd52l2\\\",\\\"childId\\\":\\\"child_1774606605016_0sokfq\\\",\\\"action\\\":\\\"redeemReward\\\"}\n@{ExitCode=1; StdOut=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 12 (line 1 column 13)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string; StdErr=- Loading data...; Combined=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 12 (line 1 column 13)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string\n- Loading data...}.Combined"
+                    },
+                    {
+                        "name":  "point.auditRedeem.rejected.persist",
+                        "status":  "failed",
+                        "durationMs":  2,
+                        "error":  "The property \u0027redeemRequestId\u0027 cannot be found on this object. Verify that the property exists."
+                    },
+                    {
+                        "name":  "point.adjustPoints.write+return",
+                        "status":  "passed",
+                        "durationMs":  6079,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.auditRedeem.approved.write-record",
+                        "status":  "failed",
+                        "durationMs":  3027,
+                        "error":  "Command failed: C:\\nvm4w\\nodejs\\node.exe E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js fn invoke point -e cloudbase-1g26i1txc0ae8f4b --params {\\\"reason\\\":\\\"Submit another redeem request for approval flow testing.\\\",\\\"rewardId\\\":\\\"reward_1774606656603_jd52l2\\\",\\\"childId\\\":\\\"child_1774606605016_0sokfq\\\",\\\"action\\\":\\\"redeemReward\\\"}\n@{ExitCode=1; StdOut=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 17 (line 1 column 18)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string; StdErr=- Loading data...; Combined=CloudBase CLI 2.12.7\nTry the tcb ai command to start your AI full-stack development experience\nSyntaxError: Unterminated string in JSON at position 17 (line 1 column 18)\n    at JSON.parse (\u003canonymous\u003e)\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410102:35)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\nunhandledRejection CloudBaseError: jsonStringParams parameter is not a valid JSON string\n    at InvokeFunction.\u003canonymous\u003e (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410106:27)\n    at Generator.next (\u003canonymous\u003e)\n    at fulfilled (E:\\env\\node\\node_global\\node_modules\\@cloudbase\\cli\\dist\\standalone\\cli.js:410036:58)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\n  original: null,\n  code: \u0027\u0027,\n  requestId: \u0027\u0027,\n  action: \u0027\u0027,\n  meta: {}\n}\n脳 jsonStringParams parameter is not a valid JSON string\n- Loading data...}.Combined"
+                    },
+                    {
+                        "name":  "point.submitWish.write+return",
+                        "status":  "passed",
+                        "durationMs":  4041,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.auditWish.persist",
+                        "status":  "passed",
+                        "durationMs":  4055,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "point.getWeeklyTrend.return-schema",
+                        "status":  "passed",
+                        "durationMs":  2042,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "growth.overview+timeline.return-schema",
+                        "status":  "passed",
+                        "durationMs":  4069,
+                        "error":  ""
+                    },
+                    {
+                        "name":  "mcp.getVerifyCode.return-schema",
+                        "status":  "passed",
+                        "durationMs":  2016,
+                        "error":  ""
+                    }
+                ],
+    "envId":  "cloudbase-1g26i1txc0ae8f4b",
+    "ruleId":  "",
+    "totalCases":  26,
+    "generatedAt":  "2026-03-27T18:18:07",
+    "rewardId":  "reward_1774606656603_jd52l2",
+    "childId":  "child_1774606605016_0sokfq",
+    "passedCases":  17
+}

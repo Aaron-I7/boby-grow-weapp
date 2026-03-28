@@ -1,0 +1,30 @@
+page { background: #FFF8E1; }
+.child-container { padding: 0 32rpx 60rpx; background: #FFF8E1; min-height: 100vh; }
+
+.points-bar { display: flex; align-items: center; justify-content: center; gap: 12rpx; padding: 24rpx 0; }
+.points-bar-num { font-size: 40rpx; font-weight: 800; color: #5D4037; }
+.points-bar-label { font-size: 26rpx; color: #999; }
+
+.reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20rpx; }
+.reward-card { background: #fff; border-radius: 32rpx; padding: 32rpx; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4rpx 16rpx rgba(255,152,0,0.08); }
+.reward-icon-wrap { width: 80rpx; height: 80rpx; background: #FFF3E0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16rpx; }
+.reward-name { font-size: 28rpx; font-weight: 700; color: #5D4037; margin-bottom: 8rpx; text-align: center; }
+.reward-cost { font-size: 24rpx; color: #FF9800; font-weight: 600; margin-bottom: 16rpx; }
+.reward-meta { font-size: 22rpx; color: #8A7D73; margin-bottom: 8rpx; }
+.reward-btn { width: 100%; text-align: center; padding: 16rpx; border-radius: 24rpx; font-size: 26rpx; font-weight: 700; }
+.reward-btn-active { background: #FF9800; color: #fff; }
+.reward-btn-disabled { background: #f0f0f0; color: #ccc; }
+
+.history-section { margin-top: 28rpx; background: #fff; border-radius: 24rpx; padding: 24rpx; }
+.history-title { display: block; font-size: 28rpx; font-weight: 700; color: #5D4037; margin-bottom: 14rpx; }
+.history-empty { font-size: 24rpx; color: #999; padding: 10rpx 0; }
+.history-list { display: flex; flex-direction: column; gap: 12rpx; }
+.history-item { display: flex; align-items: center; justify-content: space-between; padding: 12rpx 0; border-bottom: 1rpx solid #f5ede3; }
+.history-item:last-child { border-bottom: none; }
+.history-main { display: flex; flex-direction: column; gap: 4rpx; }
+.history-name { font-size: 26rpx; color: #5D4037; font-weight: 600; }
+.history-meta { font-size: 22rpx; color: #8A7D73; }
+.history-status { font-size: 22rpx; font-weight: 700; }
+.history-status-pending { color: #f57c00; }
+.history-status-approved { color: #2e7d32; }
+.history-status-rejected { color: #c62828; }

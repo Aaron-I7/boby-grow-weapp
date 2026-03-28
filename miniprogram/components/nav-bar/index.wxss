@@ -1,0 +1,149 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.nav-root {
+  position: relative;
+  z-index: 40;
+  margin: 0 -24rpx;
+  background: rgba(248, 249, 251, 0.96);
+  backdrop-filter: blur(8rpx);
+  border-bottom: 1rpx solid var(--parent-border);
+}
+
+.safe-top {
+  width: 100%;
+}
+
+.nav-shell {
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+
+.primary-inner,
+.sub-inner {
+  height: 100%;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.primary-inner {
+  justify-content: space-between;
+}
+
+.primary-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.primary-avatar {
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  border: 3rpx solid #b8dff0;
+  flex: 0 0 58rpx;
+  margin-right: 18rpx;
+}
+
+.primary-avatar-empty {
+  background: var(--parent-surface-muted);
+  border-style: dashed;
+  border-color: var(--parent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-avatar-icon {
+  width: 30rpx;
+  height: 30rpx;
+  opacity: 0.46;
+}
+
+.primary-texts {
+  min-width: 0;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.primary-subtitle {
+  font-size: 18rpx;
+  line-height: 1.2;
+  color: var(--parent-text-hint);
+}
+
+.primary-title {
+  margin-top: 4rpx;
+  font-size: 34rpx;
+  line-height: 1.1;
+  color: var(--parent-primary);
+  font-weight: 700;
+}
+
+.primary-switch {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: var(--parent-primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 60rpx;
+}
+
+.primary-switch.ghost {
+  background: transparent;
+}
+
+.primary-switch-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.sub-inner {
+  justify-content: space-between;
+}
+
+.sub-side {
+  width: 88rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 88rpx;
+}
+
+.sub-back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-back-icon {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.sub-title {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 1;
+  color: var(--parent-text);
+  font-weight: 600;
+}
+
+.is-press {
+  transform: scale(var(--parent-press-scale));
+  opacity: 0.86;
+  transition: transform var(--parent-motion-fast), opacity var(--parent-motion-fast);
+}

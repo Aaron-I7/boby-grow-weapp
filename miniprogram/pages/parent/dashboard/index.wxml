@@ -1,0 +1,122 @@
+<view class="container">
+  <nav-bar
+    mode="primary"
+    title="{{labels.appTitle}}"
+    subtitle="{{navSubtitle}}"
+    avatarUrl="{{navAvatar}}"
+    avatarEmpty="{{navAvatarEmpty}}"
+    bind:switchchild="onSwitchChild"
+  />
+
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">{{labels.loading}}</text>
+  </view>
+
+  <view class="error-container" wx:if="{{error && !loading}}">
+      <image class="error-icon" src="/images/svg/ui/icon-info.svg" />
+    <text class="error-text">{{error}}</text>
+    <button class="retry-btn" bindtap="loadData">{{labels.retry}}</button>
+  </view>
+
+  <block wx:if="{{!loading && !error}}">
+    <view class="empty-guide" wx:if="{{!hasChildren}}">
+      <text class="empty-guide-title">{{labels.emptyTitle}}</text>
+      <text class="empty-guide-desc">{{labels.emptyDesc}}</text>
+      <view class="empty-guide-btn" bindtap="onGoAddChild">{{labels.goAddChild}}</view>
+    </view>
+
+    <view class="points-card">
+      <text class="points-label">{{labels.totalPoints}}</text>
+      <view class="points-row">
+        <text class="points-num">{{child.currentPoints || 0}}</text>
+        <text class="points-unit">PTS</text>
+      </view>
+      <view class="points-task-info">
+        <image class="points-task-icon" src="/images/svg/ui/icon-task-done.svg" />
+        <text>{{labels.doneToday}} {{completedCount}} / {{totalCount}}</text>
+      </view>
+    </view>
+
+    <view class="quick-actions">
+      <view class="action-card pressable" bindtap="onAuditCenter" hover-class="is-press" hover-stay-time="70">
+        <view class="action-icon action-icon-orange">
+        <image class="action-image" src="/images/svg/ui/icon-audit.svg" />
+        </view>
+        <text class="action-text">{{labels.audit}}</text>
+        <view class="badge" wx:if="{{badgeText}}">{{badgeText}}</view>
+      </view>
+    </view>
+
+    <view class="overdue-banner" wx:if="{{auditSummary.hasOverdue}}">
+      <view class="overdue-main">
+        <text class="overdue-title">{{labels.overdueTitlePrefix}}{{auditSummary.overduePending}}{{labels.overdueTitleSuffix}}</text>
+        <text class="overdue-detail">{{labels.overdueDetailPrefix}}{{auditSummary.overdueTask}}{{labels.overdueDetailMiddle}}{{auditSummary.overdueReward}}{{labels.overdueDetailEnd}}{{auditSummary.overdueWish}}</text>
+        <text class="overdue-time" wx:if="{{overdueHint}}">{{overdueHint}}</text>
+      </view>
+      <view class="overdue-action pressable" bindtap="onAuditCenter" hover-class="is-press" hover-stay-time="70">{{labels.overdueAction}}</view>
+    </view>
+
+    <view class="digest-card pressable" bindtap="onWeeklyReport" hover-class="is-press" hover-stay-time="70">
+      <view class="digest-head">
+        <text class="digest-title">{{labels.weeklyDigestTitle}}</text>
+        <text class="digest-action">{{labels.weeklyDigestAction}}</text>
+      </view>
+      <text class="digest-desc">{{weeklyDigest.digestText || labels.digestFallback}}</text>
+      <view class="digest-grid">
+        <view class="digest-item">
+          <text class="digest-label">{{labels.digestCompleted}}</text>
+          <text class="digest-value">{{weeklyDigest.weekCompletedCount}}</text>
+        </view>
+        <view class="digest-item">
+          <text class="digest-label">{{labels.digestPoints}}</text>
+          <text class="digest-value">{{weeklyDigest.weekPoints}}</text>
+        </view>
+        <view class="digest-item">
+          <text class="digest-label">{{labels.digestStreak}}</text>
+          <text class="digest-value">{{weeklyDigest.reflectionStreak}}{{labels.digestDayUnit}}</text>
+        </view>
+      </view>
+      <view class="challenge-wrap" wx:if="{{weeklyDigest.challengeList.length > 0}}">
+        <text class="challenge-title">{{labels.challengeTitle}}</text>
+        <view class="challenge-list">
+          <view class="challenge-item {{item.reached ? 'challenge-item-done' : ''}}" wx:for="{{weeklyDigest.challengeList}}" wx:key="target">
+            <text class="challenge-item-name">{{item.title}}</text>
+            <text class="challenge-item-state" wx:if="{{item.reached}}">{{labels.challengeDone}}</text>
+            <text class="challenge-item-state" wx:if="{{!item.reached}}">{{labels.challengeRemainPrefix}}{{item.remaining}}{{labels.challengeRemainSuffix}}</text>
+            <text class="challenge-item-progress">{{item.progress}} / {{item.target}}{{labels.challengeTargetSuffix}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-header">
+      <text class="section-title">{{labels.trendTitle}}</text>
+      <text class="section-sub">{{labels.trendUnit}}</text>
+    </view>
+
+    <view class="chart-card">
+      <view class="chart-container">
+        <view class="chart-grid">
+          <view class="grid-line" wx:for="{{[0,1,2,3,4]}}" wx:key="index"></view>
+        </view>
+
+        <view class="chart-line">
+          <view class="line-segment" wx:for="{{lineSegments}}" wx:key="index" style="left: {{item.left}}%; top: {{item.top}}%; width: {{item.width}}%; transform: rotate({{item.rotate}}deg);"></view>
+        </view>
+
+        <view class="chart-points">
+          <view class="chart-point" wx:for="{{linePoints}}" wx:key="index" style="left: {{item.x}}%; top: {{item.y}}%;">
+            <view class="point-dot"></view>
+          </view>
+        </view>
+
+        <view class="chart-labels">
+          <view class="label-item {{item.active ? 'active' : ''}}" wx:for="{{weekLabels}}" wx:key="index">
+            <text class="label-text">{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

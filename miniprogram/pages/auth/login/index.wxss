@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eff5fb 0%, #f9fbfd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28rpx;
+  box-sizing: border-box;
+}
+
+.panel {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 60rpx 44rpx;
+  box-sizing: border-box;
+  box-shadow: 0 16rpx 34rpx rgba(18, 54, 84, 0.08);
+  text-align: center;
+}
+
+.logo-wrap {
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+  background: #e6f3fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.title {
+  margin-top: 26rpx;
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #1f2a35;
+}
+
+.subtitle {
+  margin-top: 12rpx;
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: #7b8794;
+}
+
+.login-btn {
+  margin-top: 44rpx;
+}

@@ -1,0 +1,281 @@
+.container {
+  min-height: 100vh;
+  background: var(--parent-bg);
+}
+
+.nav-shell {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(248, 249, 251, 0.96);
+  backdrop-filter: blur(8rpx);
+  border-bottom: 1rpx solid var(--parent-border);
+}
+
+.nav-inner {
+  height: 100%;
+  padding: 0 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 8rpx 12rpx 8rpx 0;
+  border-radius: 18rpx;
+}
+
+.nav-back {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  color: var(--parent-primary-strong);
+  font-weight: 700;
+}
+
+.nav-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #c2e8ff;
+  color: #004e69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.content {
+  padding: 26rpx 0 calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.child-scroll {
+  white-space: nowrap;
+}
+
+.child-chip,
+.chip-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+  height: 56rpx;
+  border-radius: 999rpx;
+  padding: 0 16rpx 0 6rpx;
+  margin-right: 10rpx;
+  background: var(--parent-surface-muted);
+}
+
+.chip-active {
+  background: #e2f2f9;
+  border: 2rpx solid var(--parent-primary);
+  padding-left: 5rpx;
+}
+
+.chip-avatar {
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+}
+
+.chip-name {
+  font-size: 24rpx;
+  color: #51606d;
+  font-weight: 700;
+}
+
+.chip-active .chip-name {
+  color: var(--parent-primary);
+}
+
+.chip-add {
+  width: 56rpx;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 2rpx dashed #c7d0d8;
+}
+
+.chip-add-icon {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.privacy-card {
+  margin-top: 20rpx;
+  border-radius: 16rpx;
+  background: rgba(15, 111, 146, 0.06);
+  border: 1rpx solid rgba(15, 111, 146, 0.18);
+  padding: 14rpx 12rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.privacy-icon {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.privacy-text {
+  flex: 1;
+  font-size: 22rpx;
+  color: #386c81;
+  line-height: 1.45;
+}
+
+.code-hero {
+  margin-top: 24rpx;
+  border-radius: 40rpx;
+  background: var(--parent-surface);
+  padding: 34rpx 24rpx;
+  text-align: center;
+  box-shadow: 0 12rpx 28rpx rgba(17, 39, 52, 0.09);
+  position: relative;
+  overflow: hidden;
+}
+
+.code-top-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, var(--parent-primary), #4fc3f7, var(--parent-primary));
+}
+
+.code-label {
+  display: block;
+  font-size: 22rpx;
+  color: var(--parent-text-hint);
+  letter-spacing: 1rpx;
+}
+
+.code-row {
+  margin-top: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14rpx;
+}
+
+.code-num {
+  font-size: 84rpx;
+  line-height: 1;
+  color: var(--parent-primary);
+  font-weight: 800;
+}
+
+.code-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #cfd8df;
+}
+
+.action-col {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.action-primary,
+.action-secondary {
+  height: 88rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.action-primary {
+  background: var(--parent-primary);
+  color: var(--parent-surface);
+}
+
+.action-secondary {
+  background: var(--parent-surface-muted);
+  color: #4f5963;
+}
+
+.action-icon {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.tip-card {
+  margin-top: 16rpx;
+  border-radius: 20rpx;
+  background: #f2f4f7;
+  padding: 16rpx 14rpx;
+  display: flex;
+  align-items: flex-start;
+  gap: 10rpx;
+}
+
+.tip-icon-wrap {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  background: #dceff8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-icon {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: #5e6771;
+}
+
+.security-divider {
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.line {
+  flex: 1;
+  height: 1rpx;
+  background: #dde3e8;
+}
+
+.security-title {
+  font-size: 18rpx;
+  color: #85909a;
+  letter-spacing: 2rpx;
+}
+
+.security-desc {
+  display: block;
+  margin-top: 8rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #8a949d;
+  font-style: italic;
+}
+
+.is-press {
+  transform: scale(var(--parent-press-scale));
+  opacity: 0.86;
+}

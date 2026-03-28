@@ -1,0 +1,15 @@
+page { background: #FFF8E1; }
+.child-container { padding: 0 32rpx 60rpx; background: #FFF8E1; min-height: 100vh; }
+
+.hero-card { background: linear-gradient(135deg, #FF9800, #FFB74D); border-radius: 32rpx; padding: 40rpx; text-align: center; color: #fff; margin: 24rpx 0; display: flex; align-items: center; justify-content: center; gap: 16rpx; }
+.hero-icon { font-size: 40rpx; }
+.hero-text { font-size: 30rpx; font-weight: 700; }
+
+.submit-card { background: #fff; border-radius: 24rpx; padding: 28rpx; margin-bottom: 16rpx; }
+.submit-row { display: flex; justify-content: space-between; align-items: center; }
+.submit-info { flex: 1; }
+.submit-name { font-size: 30rpx; font-weight: 600; color: #5D4037; display: block; }
+.submit-time { font-size: 22rpx; color: #999; }
+
+.empty { text-align: center; padding: 80rpx 0; color: #999; font-size: 28rpx; }
+.encourage { text-align: center; padding: 40rpx; font-size: 28rpx; color: #FF9800; font-weight: 600; }

@@ -1,0 +1,65 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" showBack="{{showBack}}" bind:back="onBack" />
+
+  <view class="form-card card">
+    <view class="form-item">
+      <text class="form-label">{{labels.role}}</text>
+      <view class="readonly-chip">{{roleLabel}}</view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.gender}}</text>
+      <picker range="{{genderList}}" value="{{genderIndex}}" bindchange="onGenderChange">
+        <view class="form-input picker-value">
+          <text>{{genderList[genderIndex]}}</text>
+          <image class="picker-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="label-row">
+        <text class="form-label">{{labels.avatar}}</text>
+        <view class="mode-switch">
+          <text class="mode-item {{avatarMode==='recommended' ? 'mode-active' : ''}}" data-mode="recommended" bindtap="onAvatarModeChange">{{labels.avatarRecommended}}</text>
+          <text class="mode-item {{avatarMode==='all' ? 'mode-active' : ''}}" data-mode="all" bindtap="onAvatarModeChange">{{labels.avatarAll}}</text>
+        </view>
+      </view>
+      <view class="avatar-grid">
+        <view
+          wx:for="{{avatarOptions}}"
+          wx:key="key"
+          class="avatar-cell {{avatarKey===item.key ? 'avatar-selected' : ''}}"
+          data-key="{{item.key}}"
+          data-url="{{item.path}}"
+          bindtap="onSelectAvatar"
+        >
+          <image class="avatar-option" src="{{item.path}}" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.nickname}}</text>
+      <input class="form-input" placeholder="{{labels.nicknamePlaceholder}}" value="{{nickname}}" bindinput="onInput" data-field="nickname" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.age}}</text>
+      <input class="form-input" type="number" placeholder="{{labels.agePlaceholder}}" value="{{age}}" bindinput="onInput" data-field="age" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">{{labels.initPoints}}</text>
+      <input class="form-input" type="number" placeholder="{{labels.initPointsPlaceholder}}" value="{{initPoints}}" bindinput="onInput" data-field="initPoints" />
+    </view>
+  </view>
+
+  <view class="privacy-notice">
+    <text>{{labels.privacy}}</text>
+  </view>
+
+  <view class="parent-btn-primary" bindtap="onSave">{{saveText}}</view>
+  <view class="btn-skip" wx:if="{{isOnboarding}}" bindtap="onSkip">{{labels.skip}}</view>
+</view>
+

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "openapi": [
+      "wxacode.getUnlimited",
+      "wxacode.get",
+      "urlscheme.generate"
+    ]
+  }
+}

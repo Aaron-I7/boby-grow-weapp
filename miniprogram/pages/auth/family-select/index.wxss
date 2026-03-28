@@ -1,0 +1,74 @@
+.container {
+  padding-top: 26rpx;
+}
+
+.hero {
+  margin-top: 8rpx;
+  background: linear-gradient(135deg, #0f6f92 0%, #4bb1df 100%);
+  color: #ffffff;
+  border-radius: 28rpx;
+}
+
+.hero-title {
+  display: block;
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  margin-top: 10rpx;
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.section {
+  margin-top: 24rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 30rpx;
+  color: #22303a;
+  font-weight: 700;
+}
+
+.section-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: #768391;
+}
+
+.form-item {
+  margin-top: 24rpx;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 12rpx;
+  font-size: 24rpx;
+  color: #5f6d79;
+}
+
+.form-input {
+  background: #f2f6f9;
+  border-radius: 14rpx;
+  padding: 18rpx 20rpx;
+  font-size: 28rpx;
+}
+
+.btn-secondary {
+  margin-top: 26rpx;
+  border-radius: 48rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  background: #ffffff;
+  color: #0f6f92;
+  border: 2rpx solid #0f6f92;
+}

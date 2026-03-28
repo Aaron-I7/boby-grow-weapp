@@ -1,0 +1,143 @@
+<view class="container">
+  <nav-bar mode="sub" title="{{labels.navTitle}}" showBack="{{showBack}}" bind:back="onBack" />
+
+  <view class="content">
+    <view class="avatar-section">
+      <view class="avatar-wrap">
+        <image class="edit-avatar" src="{{avatarUrl}}" mode="aspectFill" />
+        <view class="avatar-camera pressable" bindtap="onChangeAvatar" hover-class="is-press" hover-stay-time="60">
+          <image class="camera-icon" src="/images/svg/ui/icon-add-task.svg" />
+        </view>
+      </view>
+      <text class="avatar-hint">{{labels.avatarHint}}</text>
+    </view>
+
+    <view class="form-block">
+      <view class="form-item">
+        <text class="form-label">{{labels.fieldName}}</text>
+        <input class="form-input" placeholder="{{labels.namePlaceholder}}" value="{{nickname}}" bindinput="onInput" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.fieldIdentity}}</text>
+        <picker range="{{identityList}}" value="{{identityIndex}}" bindchange="onIdentityChange">
+          <view class="form-input picker-value">
+            <text>{{identityList[identityIndex]}}</text>
+            <image class="picker-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.fieldGender}}</text>
+        <picker range="{{genderList}}" value="{{genderIndex}}" bindchange="onGenderChange">
+          <view class="form-input picker-value">
+            <text>{{genderList[genderIndex]}}</text>
+            <image class="picker-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <view class="label-row">
+          <text class="form-label">{{labels.fieldPresetAvatar}}</text>
+          <view class="mode-switch">
+            <text class="mode-item {{avatarMode==='recommended' ? 'mode-active' : ''}}" data-mode="recommended" bindtap="onAvatarModeChange">{{labels.avatarRecommended}}</text>
+            <text class="mode-item {{avatarMode==='all' ? 'mode-active' : ''}}" data-mode="all" bindtap="onAvatarModeChange">{{labels.avatarAll}}</text>
+          </view>
+        </view>
+        <view class="avatar-grid">
+          <view
+            wx:for="{{avatarOptions}}"
+            wx:key="key"
+            class="avatar-cell {{avatarKey===item.key ? 'avatar-selected' : ''}}"
+            data-key="{{item.key}}"
+            data-url="{{item.path}}"
+            bindtap="onSelectPresetAvatar"
+          >
+            <image class="avatar-option" src="{{item.path}}" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-card">
+      <view class="info-icon-wrap icon-primary">
+        <image class="info-icon" src="/images/svg/ui/icon-key.svg" />
+      </view>
+      <view class="info-main">
+        <text class="info-title">{{labels.securityTitle}}</text>
+        <text class="info-desc">{{labels.securityDesc}}</text>
+      </view>
+    </view>
+
+    <view class="info-card">
+      <view class="info-icon-wrap icon-secondary">
+        <image class="info-icon" src="/images/svg/ui/icon-group.svg" />
+      </view>
+      <view class="info-main">
+        <text class="info-title">{{labels.roleTitle}}</text>
+        <text class="info-desc">{{labels.roleDesc}}</text>
+      </view>
+    </view>
+
+    <view class="child-section" wx:if="{{isOnboarding}}">
+      <view class="child-section-head">
+        <text class="child-section-title">{{labels.childSectionTitle}}</text>
+        <text class="child-section-desc">{{labels.childSectionDesc}}</text>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.childName}}</text>
+        <input class="form-input" placeholder="{{labels.childNamePlaceholder}}" value="{{childNickname}}" bindinput="onChildInput" data-field="childNickname" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.childAge}}</text>
+        <input class="form-input" type="number" placeholder="{{labels.childAgePlaceholder}}" value="{{childAge}}" bindinput="onChildInput" data-field="childAge" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.childInitPoints}}</text>
+        <input class="form-input" type="number" placeholder="{{labels.childInitPointsPlaceholder}}" value="{{childInitPoints}}" bindinput="onChildInput" data-field="childInitPoints" />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">{{labels.childGender}}</text>
+        <picker range="{{childGenderList}}" value="{{childGenderIndex}}" bindchange="onChildGenderChange">
+          <view class="form-input picker-value">
+            <text>{{childGenderList[childGenderIndex]}}</text>
+            <image class="picker-arrow" src="/images/svg/ui/icon-chevron-right.svg" />
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <view class="label-row">
+          <text class="form-label">{{labels.childAvatar}}</text>
+          <view class="mode-switch">
+            <text class="mode-item {{childAvatarMode==='recommended' ? 'mode-active' : ''}}" data-mode="recommended" bindtap="onChildAvatarModeChange">{{labels.avatarRecommended}}</text>
+            <text class="mode-item {{childAvatarMode==='all' ? 'mode-active' : ''}}" data-mode="all" bindtap="onChildAvatarModeChange">{{labels.avatarAll}}</text>
+          </view>
+        </view>
+        <view class="avatar-grid">
+          <view
+            wx:for="{{childAvatarOptions}}"
+            wx:key="key"
+            class="avatar-cell {{childAvatarKey===item.key ? 'avatar-selected' : ''}}"
+            data-key="{{item.key}}"
+            data-url="{{item.path}}"
+            bindtap="onSelectChildAvatar"
+          >
+            <image class="avatar-option" src="{{item.path}}" mode="aspectFill" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="save-btn pressable" bindtap="onSave" hover-class="is-press" hover-stay-time="60">{{saving ? '保存中...' : saveText}}</view>
+  </view>
+</view>
+

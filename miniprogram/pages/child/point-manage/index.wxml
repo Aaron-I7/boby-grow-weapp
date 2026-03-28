@@ -1,0 +1,21 @@
+<view class="child-container">
+  <view class="points-summary">
+    <view class="summary-main">
+      <text class="summary-label">当前可用积分</text>
+      <text class="summary-num">{{child.currentPoints || 0}}</text>
+    </view>
+    <text class="summary-week">本周 +{{weekEarned}}</text>
+  </view>
+
+  <view class="record-list">
+    <view class="record-item" wx:for="{{records}}" wx:key="_id">
+      <view class="record-left">
+        <text class="record-note">{{item.note}}</text>
+        <text class="record-time">{{item.createdAt}}</text>
+      </view>
+      <text class="record-amount {{item.amount > 0 ? 'record-plus' : 'record-minus'}}">{{item.amount > 0 ? '+' : ''}}{{item.amount}}</text>
+    </view>
+  </view>
+
+  <view class="load-more">加载更多记录</view>
+</view>
